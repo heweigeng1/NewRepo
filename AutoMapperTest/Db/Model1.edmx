@@ -1,0 +1,2349 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GdpStatisticModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AreaQuarterStatistics">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="QuarterName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="QuarterYear" Type="int" Nullable="false" />
+          <Property Name="Quarter" Type="int" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="Delflag" Type="int" Nullable="false" />
+          <Property Name="ControllerName" Type="nvarchar(max)" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AreaId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="QuarterStatisticId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatedTime" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Areas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="AreaCode" Type="nvarchar" MaxLength="200" />
+          <Property Name="DelFlag" Type="int" Nullable="false" />
+          <Property Name="ParentRegionID" Type="uniqueidentifier" />
+          <Property Name="CreatedTime" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="BasicGdpDataItemRecords">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Unit" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="CorrespondingPeriodAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="BasicGdpDataItemId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="BasicGdpDataRecordId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatedTime" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="BasicGdpDataItems">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ItemName" Type="nvarchar" MaxLength="200" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="Delflag" Type="int" Nullable="false" />
+          <Property Name="Unit" Type="int" Nullable="false" />
+          <Property Name="CreatedTime" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="BasicGdpDataRecords">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="Delflag" Type="int" Nullable="false" />
+          <Property Name="ResponsibleForUser" Type="nvarchar(max)" />
+          <Property Name="AreaQuarterStatisticId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatedTime" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="BasicGdpDatas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ReportName" Type="nvarchar" MaxLength="200" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="Delflag" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AreaQuarterStatisticId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatedTime" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="IndustryId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Delflag" Type="int" Nullable="false" />
+          <Property Name="CreatedTime" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CropAccounts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CropName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="CropId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Yields" Type="int" />
+          <Property Name="PrimaryIndustryRecordId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatedTime" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Crops">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CropName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Delflag" Type="int" Nullable="false" />
+          <Property Name="VarietyId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatedTime" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Enterprises">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SmallScaleIndustryRecordId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IndustryCode" Type="nvarchar(max)" />
+          <Property Name="PhoneNum" Type="nvarchar(max)" />
+          <Property Name="OrganizationCode" Type="nvarchar(max)" />
+          <Property Name="LegalPersonCode" Type="nvarchar(max)" />
+          <Property Name="EnterpriseName" Type="nvarchar" MaxLength="200" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="CorrespondingPeriodAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="CreatedTime" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Images">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="OriginalPath" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="Width" Type="int" Nullable="false" />
+          <Property Name="Height" Type="int" Nullable="false" />
+          <Property Name="Length" Type="int" Nullable="false" />
+          <Property Name="Key" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedTime" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Industries">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IndustryName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Delflag" Type="int" Nullable="false" />
+          <Property Name="CreatedTime" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="LimitedCompanies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LimitedCompanyName" Type="nvarchar" MaxLength="200" />
+          <Property Name="LimitedCompanyAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="LimitedCompanyCorrespondingPeriodAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="LimitedCompanyEmployeeCount" Type="int" Nullable="false" />
+          <Property Name="LimitedCompanyEmployeeCorrespondingPeriodCount" Type="int" Nullable="false" />
+          <Property Name="QuotaTradeRecordId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="Delflag" Type="int" Nullable="false" />
+          <Property Name="CreatedTime" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PrimaryIndustries">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PrimaryIndustryName" Type="nvarchar(max)" />
+          <Property Name="Delflag" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" />
+          <Property Name="CreatedTime" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PrimaryIndustryRecords">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="Delflag" Type="int" Nullable="false" />
+          <Property Name="ApplyDelay" Type="int" Nullable="false" />
+          <Property Name="DelayStatus" Type="int" Nullable="false" />
+          <Property Name="ResponsibleForUser" Type="nvarchar(max)" />
+          <Property Name="AreaQuarterStatisticId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatedTime" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="QuarterStatistics">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="QuarterName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="QuarterYear" Type="int" Nullable="false" />
+          <Property Name="Quarter" Type="int" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="Delflag" Type="int" Nullable="false" />
+          <Property Name="CreatedTime" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="QuotaTradeRecords">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="WholesaleAndRetailCount" Type="int" />
+          <Property Name="WholesaleAndRetailCorrespondingPeriodCount" Type="int" />
+          <Property Name="WholesaleAndRetailEmployeeAvgCount" Type="int" />
+          <Property Name="WholesaleAndRetailEmployeeAvgCorrespondingPeriodCount" Type="int" />
+          <Property Name="LimitedCompanyAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="LimitedCompanyCorrespondingPeriodAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="LimitedCompanyEmployeeCount" Type="int" />
+          <Property Name="LimitedCompanyEmployeeCorrespondingPeriodCount" Type="int" />
+          <Property Name="ResponsibleForUser" Type="nvarchar(max)" />
+          <Property Name="AreaQuarterStatisticId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Delflag" Type="int" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="CreatedTime" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="QuotaTrades">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="QuotaTradeName" Type="nvarchar" MaxLength="200" />
+          <Property Name="Delflag" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" />
+          <Property Name="CreatedTime" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedTime" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Settings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Key" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="250" />
+          <Property Name="Value" Type="nvarchar(max)" />
+          <Property Name="CreatedTime" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SmallScaleIndustries">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SmallScaleIndustryName" Type="nvarchar" MaxLength="200" />
+          <Property Name="Delflag" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" />
+          <Property Name="CreatedTime" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SmallScaleIndustryRecords">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="SelfEmployedCount" Type="int" Nullable="false" />
+          <Property Name="SelfEmployedCorrespondingPeriodCount" Type="int" Nullable="false" />
+          <Property Name="SmallBusinessCount" Type="int" Nullable="false" />
+          <Property Name="SmallBusinessCorrespondingPeriodCount" Type="int" Nullable="false" />
+          <Property Name="SmallBusinessAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="SmallBusinessCorrespondingPeriodAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Count" Type="int" Nullable="false" />
+          <Property Name="CorrespondingPeriodCount" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="CorrespondingPeriodAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="Delflag" Type="int" Nullable="false" />
+          <Property Name="ResponsibleForUser" Type="nvarchar(max)" />
+          <Property Name="AreaQuarterStatisticId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatedTime" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Tags">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="CreatedTime" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UserRoleRLs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RoleId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatedTime" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="250" />
+          <Property Name="Password" Type="nvarchar" MaxLength="200" />
+          <Property Name="NickName" Type="nvarchar" MaxLength="200" />
+          <Property Name="ImageKey" Type="nvarchar" MaxLength="250" />
+          <Property Name="Age" Type="int" Nullable="false" />
+          <Property Name="Signature" Type="nvarchar" MaxLength="250" />
+          <Property Name="Gender" Type="int" Nullable="false" />
+          <Property Name="RegisterIp" Type="nvarchar" MaxLength="20" />
+          <Property Name="RegisterAddress" Type="nvarchar" MaxLength="250" />
+          <Property Name="LastLoginTime" Type="datetime" />
+          <Property Name="InternalNotes" Type="nvarchar" MaxLength="250" />
+          <Property Name="CreatedTime" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UserTagRLs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TagId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatedTime" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Varieties">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="VarietyName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="CategoryId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Delflag" Type="int" Nullable="false" />
+          <Property Name="CreatedTime" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedTime" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_dbo_AreaQuarterStatistics_dbo_Areas_AreaId">
+          <End Role="Areas" Type="Self.Areas" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AreaQuarterStatistics" Type="Self.AreaQuarterStatistics" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Areas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AreaQuarterStatistics">
+              <PropertyRef Name="AreaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AreaQuarterStatistics_dbo_QuarterStatistics_QuarterStatisticId">
+          <End Role="QuarterStatistics" Type="Self.QuarterStatistics" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AreaQuarterStatistics" Type="Self.AreaQuarterStatistics" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuarterStatistics">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AreaQuarterStatistics">
+              <PropertyRef Name="QuarterStatisticId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AreaQuarterStatistics_dbo_Users_UserId">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AreaQuarterStatistics" Type="Self.AreaQuarterStatistics" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AreaQuarterStatistics">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Areas_dbo_Areas_ParentRegionID">
+          <End Role="Areas" Type="Self.Areas" Multiplicity="0..1" />
+          <End Role="Areas1" Type="Self.Areas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Areas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Areas1">
+              <PropertyRef Name="ParentRegionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_BasicGdpDataItemRecords_dbo_BasicGdpDataItems_BasicGdpDataItemId">
+          <End Role="BasicGdpDataItems" Type="Self.BasicGdpDataItems" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BasicGdpDataItemRecords" Type="Self.BasicGdpDataItemRecords" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BasicGdpDataItems">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BasicGdpDataItemRecords">
+              <PropertyRef Name="BasicGdpDataItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_BasicGdpDataItemRecords_dbo_BasicGdpDataRecords_BasicGdpDataRecordId">
+          <End Role="BasicGdpDataRecords" Type="Self.BasicGdpDataRecords" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BasicGdpDataItemRecords" Type="Self.BasicGdpDataItemRecords" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BasicGdpDataRecords">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BasicGdpDataItemRecords">
+              <PropertyRef Name="BasicGdpDataRecordId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_BasicGdpDataRecords_dbo_AreaQuarterStatistics_AreaQuarterStatisticId">
+          <End Role="AreaQuarterStatistics" Type="Self.AreaQuarterStatistics" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BasicGdpDataRecords" Type="Self.BasicGdpDataRecords" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AreaQuarterStatistics">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BasicGdpDataRecords">
+              <PropertyRef Name="AreaQuarterStatisticId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_BasicGdpDatas_dbo_AreaQuarterStatistics_AreaQuarterStatisticId">
+          <End Role="AreaQuarterStatistics" Type="Self.AreaQuarterStatistics" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BasicGdpDatas" Type="Self.BasicGdpDatas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AreaQuarterStatistics">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BasicGdpDatas">
+              <PropertyRef Name="AreaQuarterStatisticId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_BasicGdpDatas_dbo_Areas_Id">
+          <End Role="Areas" Type="Self.Areas" Multiplicity="1" />
+          <End Role="BasicGdpDatas" Type="Self.BasicGdpDatas" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Areas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BasicGdpDatas">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_BasicGdpDatas_dbo_Users_UserId">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="BasicGdpDatas" Type="Self.BasicGdpDatas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BasicGdpDatas">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Categories_dbo_Industries_IndustryId">
+          <End Role="Industries" Type="Self.Industries" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Categories" Type="Self.Categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Industries">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Categories">
+              <PropertyRef Name="IndustryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_CropAccounts_dbo_Crops_CropId">
+          <End Role="Crops" Type="Self.Crops" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CropAccounts" Type="Self.CropAccounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Crops">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CropAccounts">
+              <PropertyRef Name="CropId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_CropAccounts_dbo_PrimaryIndustryRecords_PrimaryIndustryRecordId">
+          <End Role="PrimaryIndustryRecords" Type="Self.PrimaryIndustryRecords" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CropAccounts" Type="Self.CropAccounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PrimaryIndustryRecords">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CropAccounts">
+              <PropertyRef Name="PrimaryIndustryRecordId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Crops_dbo_Varieties_VarietyId">
+          <End Role="Varieties" Type="Self.Varieties" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Crops" Type="Self.Crops" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Varieties">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Crops">
+              <PropertyRef Name="VarietyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Enterprises_dbo_SmallScaleIndustryRecords_SmallScaleIndustryRecordId">
+          <End Role="SmallScaleIndustryRecords" Type="Self.SmallScaleIndustryRecords" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Enterprises" Type="Self.Enterprises" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SmallScaleIndustryRecords">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Enterprises">
+              <PropertyRef Name="SmallScaleIndustryRecordId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Images_dbo_Users_UserId">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Images" Type="Self.Images" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Images">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_LimitedCompanies_dbo_QuotaTradeRecords_QuotaTradeRecordId">
+          <End Role="QuotaTradeRecords" Type="Self.QuotaTradeRecords" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LimitedCompanies" Type="Self.LimitedCompanies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuotaTradeRecords">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LimitedCompanies">
+              <PropertyRef Name="QuotaTradeRecordId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_PrimaryIndustries_dbo_Areas_Id">
+          <End Role="Areas" Type="Self.Areas" Multiplicity="1" />
+          <End Role="PrimaryIndustries" Type="Self.PrimaryIndustries" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Areas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PrimaryIndustries">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_PrimaryIndustries_dbo_Users_UserId">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="PrimaryIndustries" Type="Self.PrimaryIndustries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PrimaryIndustries">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_PrimaryIndustryRecords_dbo_AreaQuarterStatistics_AreaQuarterStatisticId">
+          <End Role="AreaQuarterStatistics" Type="Self.AreaQuarterStatistics" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PrimaryIndustryRecords" Type="Self.PrimaryIndustryRecords" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AreaQuarterStatistics">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PrimaryIndustryRecords">
+              <PropertyRef Name="AreaQuarterStatisticId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_QuotaTradeRecords_dbo_AreaQuarterStatistics_AreaQuarterStatisticId">
+          <End Role="AreaQuarterStatistics" Type="Self.AreaQuarterStatistics" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="QuotaTradeRecords" Type="Self.QuotaTradeRecords" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AreaQuarterStatistics">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="QuotaTradeRecords">
+              <PropertyRef Name="AreaQuarterStatisticId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_QuotaTrades_dbo_Areas_Id">
+          <End Role="Areas" Type="Self.Areas" Multiplicity="1" />
+          <End Role="QuotaTrades" Type="Self.QuotaTrades" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Areas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="QuotaTrades">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_QuotaTrades_dbo_Users_UserId">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="QuotaTrades" Type="Self.QuotaTrades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="QuotaTrades">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_SmallScaleIndustries_dbo_Areas_Id">
+          <End Role="Areas" Type="Self.Areas" Multiplicity="1" />
+          <End Role="SmallScaleIndustries" Type="Self.SmallScaleIndustries" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Areas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SmallScaleIndustries">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_SmallScaleIndustries_dbo_Users_UserId">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="SmallScaleIndustries" Type="Self.SmallScaleIndustries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SmallScaleIndustries">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_SmallScaleIndustryRecords_dbo_AreaQuarterStatistics_AreaQuarterStatisticId">
+          <End Role="AreaQuarterStatistics" Type="Self.AreaQuarterStatistics" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SmallScaleIndustryRecords" Type="Self.SmallScaleIndustryRecords" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AreaQuarterStatistics">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SmallScaleIndustryRecords">
+              <PropertyRef Name="AreaQuarterStatisticId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UserRoleRLs_dbo_Roles_RoleId">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="UserRoleRLs" Type="Self.UserRoleRLs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRoleRLs">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UserRoleRLs_dbo_Users_UserId">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserRoleRLs" Type="Self.UserRoleRLs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRoleRLs">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UserTagRLs_dbo_Tags_TagId">
+          <End Role="Tags" Type="Self.Tags" Multiplicity="1" />
+          <End Role="UserTagRLs" Type="Self.UserTagRLs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tags">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserTagRLs">
+              <PropertyRef Name="TagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UserTagRLs_dbo_Users_UserId">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserTagRLs" Type="Self.UserTagRLs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserTagRLs">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Varieties_dbo_Categories_CategoryId">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Varieties" Type="Self.Varieties" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Varieties">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GdpStatisticModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AreaQuarterStatistics" EntityType="Self.AreaQuarterStatistics" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Areas" EntityType="Self.Areas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BasicGdpDataItemRecords" EntityType="Self.BasicGdpDataItemRecords" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BasicGdpDataItems" EntityType="Self.BasicGdpDataItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BasicGdpDataRecords" EntityType="Self.BasicGdpDataRecords" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BasicGdpDatas" EntityType="Self.BasicGdpDatas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CropAccounts" EntityType="Self.CropAccounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Crops" EntityType="Self.Crops" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Enterprises" EntityType="Self.Enterprises" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Images" EntityType="Self.Images" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Industries" EntityType="Self.Industries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LimitedCompanies" EntityType="Self.LimitedCompanies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PrimaryIndustries" EntityType="Self.PrimaryIndustries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PrimaryIndustryRecords" EntityType="Self.PrimaryIndustryRecords" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuarterStatistics" EntityType="Self.QuarterStatistics" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuotaTradeRecords" EntityType="Self.QuotaTradeRecords" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuotaTrades" EntityType="Self.QuotaTrades" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Settings" EntityType="Self.Settings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SmallScaleIndustries" EntityType="Self.SmallScaleIndustries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SmallScaleIndustryRecords" EntityType="Self.SmallScaleIndustryRecords" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tags" EntityType="Self.Tags" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRoleRLs" EntityType="Self.UserRoleRLs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTagRLs" EntityType="Self.UserTagRLs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Varieties" EntityType="Self.Varieties" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_AreaQuarterStatistics_dbo_Areas_AreaId" Association="Self.FK_dbo_AreaQuarterStatistics_dbo_Areas_AreaId">
+            <End Role="Areas" EntitySet="Areas" />
+            <End Role="AreaQuarterStatistics" EntitySet="AreaQuarterStatistics" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AreaQuarterStatistics_dbo_QuarterStatistics_QuarterStatisticId" Association="Self.FK_dbo_AreaQuarterStatistics_dbo_QuarterStatistics_QuarterStatisticId">
+            <End Role="QuarterStatistics" EntitySet="QuarterStatistics" />
+            <End Role="AreaQuarterStatistics" EntitySet="AreaQuarterStatistics" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AreaQuarterStatistics_dbo_Users_UserId" Association="Self.FK_dbo_AreaQuarterStatistics_dbo_Users_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="AreaQuarterStatistics" EntitySet="AreaQuarterStatistics" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Areas_dbo_Areas_ParentRegionID" Association="Self.FK_dbo_Areas_dbo_Areas_ParentRegionID">
+            <End Role="Areas" EntitySet="Areas" />
+            <End Role="Areas1" EntitySet="Areas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_BasicGdpDataItemRecords_dbo_BasicGdpDataItems_BasicGdpDataItemId" Association="Self.FK_dbo_BasicGdpDataItemRecords_dbo_BasicGdpDataItems_BasicGdpDataItemId">
+            <End Role="BasicGdpDataItems" EntitySet="BasicGdpDataItems" />
+            <End Role="BasicGdpDataItemRecords" EntitySet="BasicGdpDataItemRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_BasicGdpDataItemRecords_dbo_BasicGdpDataRecords_BasicGdpDataRecordId" Association="Self.FK_dbo_BasicGdpDataItemRecords_dbo_BasicGdpDataRecords_BasicGdpDataRecordId">
+            <End Role="BasicGdpDataRecords" EntitySet="BasicGdpDataRecords" />
+            <End Role="BasicGdpDataItemRecords" EntitySet="BasicGdpDataItemRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_BasicGdpDataRecords_dbo_AreaQuarterStatistics_AreaQuarterStatisticId" Association="Self.FK_dbo_BasicGdpDataRecords_dbo_AreaQuarterStatistics_AreaQuarterStatisticId">
+            <End Role="AreaQuarterStatistics" EntitySet="AreaQuarterStatistics" />
+            <End Role="BasicGdpDataRecords" EntitySet="BasicGdpDataRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_BasicGdpDatas_dbo_AreaQuarterStatistics_AreaQuarterStatisticId" Association="Self.FK_dbo_BasicGdpDatas_dbo_AreaQuarterStatistics_AreaQuarterStatisticId">
+            <End Role="AreaQuarterStatistics" EntitySet="AreaQuarterStatistics" />
+            <End Role="BasicGdpDatas" EntitySet="BasicGdpDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_BasicGdpDatas_dbo_Areas_Id" Association="Self.FK_dbo_BasicGdpDatas_dbo_Areas_Id">
+            <End Role="Areas" EntitySet="Areas" />
+            <End Role="BasicGdpDatas" EntitySet="BasicGdpDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_BasicGdpDatas_dbo_Users_UserId" Association="Self.FK_dbo_BasicGdpDatas_dbo_Users_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="BasicGdpDatas" EntitySet="BasicGdpDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Categories_dbo_Industries_IndustryId" Association="Self.FK_dbo_Categories_dbo_Industries_IndustryId">
+            <End Role="Industries" EntitySet="Industries" />
+            <End Role="Categories" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_CropAccounts_dbo_Crops_CropId" Association="Self.FK_dbo_CropAccounts_dbo_Crops_CropId">
+            <End Role="Crops" EntitySet="Crops" />
+            <End Role="CropAccounts" EntitySet="CropAccounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_CropAccounts_dbo_PrimaryIndustryRecords_PrimaryIndustryRecordId" Association="Self.FK_dbo_CropAccounts_dbo_PrimaryIndustryRecords_PrimaryIndustryRecordId">
+            <End Role="PrimaryIndustryRecords" EntitySet="PrimaryIndustryRecords" />
+            <End Role="CropAccounts" EntitySet="CropAccounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Crops_dbo_Varieties_VarietyId" Association="Self.FK_dbo_Crops_dbo_Varieties_VarietyId">
+            <End Role="Varieties" EntitySet="Varieties" />
+            <End Role="Crops" EntitySet="Crops" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Enterprises_dbo_SmallScaleIndustryRecords_SmallScaleIndustryRecordId" Association="Self.FK_dbo_Enterprises_dbo_SmallScaleIndustryRecords_SmallScaleIndustryRecordId">
+            <End Role="SmallScaleIndustryRecords" EntitySet="SmallScaleIndustryRecords" />
+            <End Role="Enterprises" EntitySet="Enterprises" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Images_dbo_Users_UserId" Association="Self.FK_dbo_Images_dbo_Users_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Images" EntitySet="Images" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_LimitedCompanies_dbo_QuotaTradeRecords_QuotaTradeRecordId" Association="Self.FK_dbo_LimitedCompanies_dbo_QuotaTradeRecords_QuotaTradeRecordId">
+            <End Role="QuotaTradeRecords" EntitySet="QuotaTradeRecords" />
+            <End Role="LimitedCompanies" EntitySet="LimitedCompanies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_PrimaryIndustries_dbo_Areas_Id" Association="Self.FK_dbo_PrimaryIndustries_dbo_Areas_Id">
+            <End Role="Areas" EntitySet="Areas" />
+            <End Role="PrimaryIndustries" EntitySet="PrimaryIndustries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_PrimaryIndustries_dbo_Users_UserId" Association="Self.FK_dbo_PrimaryIndustries_dbo_Users_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="PrimaryIndustries" EntitySet="PrimaryIndustries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_PrimaryIndustryRecords_dbo_AreaQuarterStatistics_AreaQuarterStatisticId" Association="Self.FK_dbo_PrimaryIndustryRecords_dbo_AreaQuarterStatistics_AreaQuarterStatisticId">
+            <End Role="AreaQuarterStatistics" EntitySet="AreaQuarterStatistics" />
+            <End Role="PrimaryIndustryRecords" EntitySet="PrimaryIndustryRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_QuotaTradeRecords_dbo_AreaQuarterStatistics_AreaQuarterStatisticId" Association="Self.FK_dbo_QuotaTradeRecords_dbo_AreaQuarterStatistics_AreaQuarterStatisticId">
+            <End Role="AreaQuarterStatistics" EntitySet="AreaQuarterStatistics" />
+            <End Role="QuotaTradeRecords" EntitySet="QuotaTradeRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_QuotaTrades_dbo_Areas_Id" Association="Self.FK_dbo_QuotaTrades_dbo_Areas_Id">
+            <End Role="Areas" EntitySet="Areas" />
+            <End Role="QuotaTrades" EntitySet="QuotaTrades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_QuotaTrades_dbo_Users_UserId" Association="Self.FK_dbo_QuotaTrades_dbo_Users_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="QuotaTrades" EntitySet="QuotaTrades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_SmallScaleIndustries_dbo_Areas_Id" Association="Self.FK_dbo_SmallScaleIndustries_dbo_Areas_Id">
+            <End Role="Areas" EntitySet="Areas" />
+            <End Role="SmallScaleIndustries" EntitySet="SmallScaleIndustries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_SmallScaleIndustries_dbo_Users_UserId" Association="Self.FK_dbo_SmallScaleIndustries_dbo_Users_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="SmallScaleIndustries" EntitySet="SmallScaleIndustries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_SmallScaleIndustryRecords_dbo_AreaQuarterStatistics_AreaQuarterStatisticId" Association="Self.FK_dbo_SmallScaleIndustryRecords_dbo_AreaQuarterStatistics_AreaQuarterStatisticId">
+            <End Role="AreaQuarterStatistics" EntitySet="AreaQuarterStatistics" />
+            <End Role="SmallScaleIndustryRecords" EntitySet="SmallScaleIndustryRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UserRoleRLs_dbo_Roles_RoleId" Association="Self.FK_dbo_UserRoleRLs_dbo_Roles_RoleId">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="UserRoleRLs" EntitySet="UserRoleRLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UserRoleRLs_dbo_Users_UserId" Association="Self.FK_dbo_UserRoleRLs_dbo_Users_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserRoleRLs" EntitySet="UserRoleRLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UserTagRLs_dbo_Tags_TagId" Association="Self.FK_dbo_UserTagRLs_dbo_Tags_TagId">
+            <End Role="Tags" EntitySet="Tags" />
+            <End Role="UserTagRLs" EntitySet="UserTagRLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UserTagRLs_dbo_Users_UserId" Association="Self.FK_dbo_UserTagRLs_dbo_Users_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserTagRLs" EntitySet="UserTagRLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Varieties_dbo_Categories_CategoryId" Association="Self.FK_dbo_Varieties_dbo_Categories_CategoryId">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Varieties" EntitySet="Varieties" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GdpStatisticModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AreaQuarterStatistics">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="QuarterName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="QuarterYear" Type="Int32" Nullable="false" />
+          <Property Name="Quarter" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="Delflag" Type="Int32" Nullable="false" />
+          <Property Name="ControllerName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="AreaId" Type="Guid" Nullable="false" />
+          <Property Name="QuarterStatisticId" Type="Guid" Nullable="false" />
+          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Areas" Relationship="Self.FK_dbo_AreaQuarterStatistics_dbo_Areas_AreaId" FromRole="AreaQuarterStatistics" ToRole="Areas" />
+          <NavigationProperty Name="QuarterStatistics" Relationship="Self.FK_dbo_AreaQuarterStatistics_dbo_QuarterStatistics_QuarterStatisticId" FromRole="AreaQuarterStatistics" ToRole="QuarterStatistics" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_dbo_AreaQuarterStatistics_dbo_Users_UserId" FromRole="AreaQuarterStatistics" ToRole="Users" />
+          <NavigationProperty Name="BasicGdpDataRecords" Relationship="Self.FK_dbo_BasicGdpDataRecords_dbo_AreaQuarterStatistics_AreaQuarterStatisticId" FromRole="AreaQuarterStatistics" ToRole="BasicGdpDataRecords" />
+          <NavigationProperty Name="BasicGdpDatas" Relationship="Self.FK_dbo_BasicGdpDatas_dbo_AreaQuarterStatistics_AreaQuarterStatisticId" FromRole="AreaQuarterStatistics" ToRole="BasicGdpDatas" />
+          <NavigationProperty Name="PrimaryIndustryRecords" Relationship="Self.FK_dbo_PrimaryIndustryRecords_dbo_AreaQuarterStatistics_AreaQuarterStatisticId" FromRole="AreaQuarterStatistics" ToRole="PrimaryIndustryRecords" />
+          <NavigationProperty Name="QuotaTradeRecords" Relationship="Self.FK_dbo_QuotaTradeRecords_dbo_AreaQuarterStatistics_AreaQuarterStatisticId" FromRole="AreaQuarterStatistics" ToRole="QuotaTradeRecords" />
+          <NavigationProperty Name="SmallScaleIndustryRecords" Relationship="Self.FK_dbo_SmallScaleIndustryRecords_dbo_AreaQuarterStatistics_AreaQuarterStatisticId" FromRole="AreaQuarterStatistics" ToRole="SmallScaleIndustryRecords" />
+        </EntityType>
+        <EntityType Name="Areas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AreaCode" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DelFlag" Type="Int32" Nullable="false" />
+          <Property Name="ParentRegionID" Type="Guid" />
+          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AreaQuarterStatistics" Relationship="Self.FK_dbo_AreaQuarterStatistics_dbo_Areas_AreaId" FromRole="Areas" ToRole="AreaQuarterStatistics" />
+          <NavigationProperty Name="Areas1" Relationship="Self.FK_dbo_Areas_dbo_Areas_ParentRegionID" FromRole="Areas" ToRole="Areas1" />
+          <NavigationProperty Name="Areas2" Relationship="Self.FK_dbo_Areas_dbo_Areas_ParentRegionID" FromRole="Areas1" ToRole="Areas" />
+          <NavigationProperty Name="BasicGdpDatas" Relationship="Self.FK_dbo_BasicGdpDatas_dbo_Areas_Id" FromRole="Areas" ToRole="BasicGdpDatas" />
+          <NavigationProperty Name="PrimaryIndustries" Relationship="Self.FK_dbo_PrimaryIndustries_dbo_Areas_Id" FromRole="Areas" ToRole="PrimaryIndustries" />
+          <NavigationProperty Name="QuotaTrades" Relationship="Self.FK_dbo_QuotaTrades_dbo_Areas_Id" FromRole="Areas" ToRole="QuotaTrades" />
+          <NavigationProperty Name="SmallScaleIndustries" Relationship="Self.FK_dbo_SmallScaleIndustries_dbo_Areas_Id" FromRole="Areas" ToRole="SmallScaleIndustries" />
+        </EntityType>
+        <EntityType Name="BasicGdpDataItemRecords">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Unit" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="CorrespondingPeriodAmount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="BasicGdpDataItemId" Type="Guid" Nullable="false" />
+          <Property Name="BasicGdpDataRecordId" Type="Guid" Nullable="false" />
+          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="BasicGdpDataItems" Relationship="Self.FK_dbo_BasicGdpDataItemRecords_dbo_BasicGdpDataItems_BasicGdpDataItemId" FromRole="BasicGdpDataItemRecords" ToRole="BasicGdpDataItems" />
+          <NavigationProperty Name="BasicGdpDataRecords" Relationship="Self.FK_dbo_BasicGdpDataItemRecords_dbo_BasicGdpDataRecords_BasicGdpDataRecordId" FromRole="BasicGdpDataItemRecords" ToRole="BasicGdpDataRecords" />
+        </EntityType>
+        <EntityType Name="BasicGdpDataItems">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ItemName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="Delflag" Type="Int32" Nullable="false" />
+          <Property Name="Unit" Type="Int32" Nullable="false" />
+          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="BasicGdpDataItemRecords" Relationship="Self.FK_dbo_BasicGdpDataItemRecords_dbo_BasicGdpDataItems_BasicGdpDataItemId" FromRole="BasicGdpDataItems" ToRole="BasicGdpDataItemRecords" />
+        </EntityType>
+        <EntityType Name="BasicGdpDataRecords">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="Delflag" Type="Int32" Nullable="false" />
+          <Property Name="ResponsibleForUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AreaQuarterStatisticId" Type="Guid" Nullable="false" />
+          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AreaQuarterStatistics" Relationship="Self.FK_dbo_BasicGdpDataRecords_dbo_AreaQuarterStatistics_AreaQuarterStatisticId" FromRole="BasicGdpDataRecords" ToRole="AreaQuarterStatistics" />
+          <NavigationProperty Name="BasicGdpDataItemRecords" Relationship="Self.FK_dbo_BasicGdpDataItemRecords_dbo_BasicGdpDataRecords_BasicGdpDataRecordId" FromRole="BasicGdpDataRecords" ToRole="BasicGdpDataItemRecords" />
+        </EntityType>
+        <EntityType Name="BasicGdpDatas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ReportName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="Delflag" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="AreaQuarterStatisticId" Type="Guid" Nullable="false" />
+          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AreaQuarterStatistics" Relationship="Self.FK_dbo_BasicGdpDatas_dbo_AreaQuarterStatistics_AreaQuarterStatisticId" FromRole="BasicGdpDatas" ToRole="AreaQuarterStatistics" />
+          <NavigationProperty Name="Areas" Relationship="Self.FK_dbo_BasicGdpDatas_dbo_Areas_Id" FromRole="BasicGdpDatas" ToRole="Areas" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_dbo_BasicGdpDatas_dbo_Users_UserId" FromRole="BasicGdpDatas" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="CategoryName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IndustryId" Type="Guid" Nullable="false" />
+          <Property Name="Delflag" Type="Int32" Nullable="false" />
+          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Industries" Relationship="Self.FK_dbo_Categories_dbo_Industries_IndustryId" FromRole="Categories" ToRole="Industries" />
+          <NavigationProperty Name="Varieties" Relationship="Self.FK_dbo_Varieties_dbo_Categories_CategoryId" FromRole="Categories" ToRole="Varieties" />
+        </EntityType>
+        <EntityType Name="CropAccounts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="CropName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CropId" Type="Guid" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Yields" Type="Int32" />
+          <Property Name="PrimaryIndustryRecordId" Type="Guid" Nullable="false" />
+          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Crops" Relationship="Self.FK_dbo_CropAccounts_dbo_Crops_CropId" FromRole="CropAccounts" ToRole="Crops" />
+          <NavigationProperty Name="PrimaryIndustryRecords" Relationship="Self.FK_dbo_CropAccounts_dbo_PrimaryIndustryRecords_PrimaryIndustryRecordId" FromRole="CropAccounts" ToRole="PrimaryIndustryRecords" />
+        </EntityType>
+        <EntityType Name="Crops">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="CropName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Delflag" Type="Int32" Nullable="false" />
+          <Property Name="VarietyId" Type="Guid" Nullable="false" />
+          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CropAccounts" Relationship="Self.FK_dbo_CropAccounts_dbo_Crops_CropId" FromRole="Crops" ToRole="CropAccounts" />
+          <NavigationProperty Name="Varieties" Relationship="Self.FK_dbo_Crops_dbo_Varieties_VarietyId" FromRole="Crops" ToRole="Varieties" />
+        </EntityType>
+        <EntityType Name="Enterprises">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="SmallScaleIndustryRecordId" Type="Guid" Nullable="false" />
+          <Property Name="IndustryCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNum" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OrganizationCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LegalPersonCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EnterpriseName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="CorrespondingPeriodAmount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="SmallScaleIndustryRecords" Relationship="Self.FK_dbo_Enterprises_dbo_SmallScaleIndustryRecords_SmallScaleIndustryRecordId" FromRole="Enterprises" ToRole="SmallScaleIndustryRecords" />
+        </EntityType>
+        <EntityType Name="Images">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="UserId" Type="Guid" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OriginalPath" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="Width" Type="Int32" Nullable="false" />
+          <Property Name="Height" Type="Int32" Nullable="false" />
+          <Property Name="Length" Type="Int32" Nullable="false" />
+          <Property Name="Key" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_dbo_Images_dbo_Users_UserId" FromRole="Images" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Industries">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="IndustryName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Delflag" Type="Int32" Nullable="false" />
+          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Categories" Relationship="Self.FK_dbo_Categories_dbo_Industries_IndustryId" FromRole="Industries" ToRole="Categories" />
+        </EntityType>
+        <EntityType Name="LimitedCompanies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="LimitedCompanyName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="LimitedCompanyAmount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="LimitedCompanyCorrespondingPeriodAmount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="LimitedCompanyEmployeeCount" Type="Int32" Nullable="false" />
+          <Property Name="LimitedCompanyEmployeeCorrespondingPeriodCount" Type="Int32" Nullable="false" />
+          <Property Name="QuotaTradeRecordId" Type="Guid" Nullable="false" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="Delflag" Type="Int32" Nullable="false" />
+          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="QuotaTradeRecords" Relationship="Self.FK_dbo_LimitedCompanies_dbo_QuotaTradeRecords_QuotaTradeRecordId" FromRole="LimitedCompanies" ToRole="QuotaTradeRecords" />
+        </EntityType>
+        <EntityType Name="PrimaryIndustries">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="PrimaryIndustryName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Delflag" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Guid" />
+          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Areas" Relationship="Self.FK_dbo_PrimaryIndustries_dbo_Areas_Id" FromRole="PrimaryIndustries" ToRole="Areas" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_dbo_PrimaryIndustries_dbo_Users_UserId" FromRole="PrimaryIndustries" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="PrimaryIndustryRecords">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="Delflag" Type="Int32" Nullable="false" />
+          <Property Name="ApplyDelay" Type="Int32" Nullable="false" />
+          <Property Name="DelayStatus" Type="Int32" Nullable="false" />
+          <Property Name="ResponsibleForUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AreaQuarterStatisticId" Type="Guid" Nullable="false" />
+          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AreaQuarterStatistics" Relationship="Self.FK_dbo_PrimaryIndustryRecords_dbo_AreaQuarterStatistics_AreaQuarterStatisticId" FromRole="PrimaryIndustryRecords" ToRole="AreaQuarterStatistics" />
+          <NavigationProperty Name="CropAccounts" Relationship="Self.FK_dbo_CropAccounts_dbo_PrimaryIndustryRecords_PrimaryIndustryRecordId" FromRole="PrimaryIndustryRecords" ToRole="CropAccounts" />
+        </EntityType>
+        <EntityType Name="QuarterStatistics">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="QuarterName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="QuarterYear" Type="Int32" Nullable="false" />
+          <Property Name="Quarter" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="Delflag" Type="Int32" Nullable="false" />
+          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AreaQuarterStatistics" Relationship="Self.FK_dbo_AreaQuarterStatistics_dbo_QuarterStatistics_QuarterStatisticId" FromRole="QuarterStatistics" ToRole="AreaQuarterStatistics" />
+        </EntityType>
+        <EntityType Name="QuotaTradeRecords">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="WholesaleAndRetailCount" Type="Int32" />
+          <Property Name="WholesaleAndRetailCorrespondingPeriodCount" Type="Int32" />
+          <Property Name="WholesaleAndRetailEmployeeAvgCount" Type="Int32" />
+          <Property Name="WholesaleAndRetailEmployeeAvgCorrespondingPeriodCount" Type="Int32" />
+          <Property Name="LimitedCompanyAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="LimitedCompanyCorrespondingPeriodAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="LimitedCompanyEmployeeCount" Type="Int32" />
+          <Property Name="LimitedCompanyEmployeeCorrespondingPeriodCount" Type="Int32" />
+          <Property Name="ResponsibleForUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AreaQuarterStatisticId" Type="Guid" Nullable="false" />
+          <Property Name="Delflag" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AreaQuarterStatistics" Relationship="Self.FK_dbo_QuotaTradeRecords_dbo_AreaQuarterStatistics_AreaQuarterStatisticId" FromRole="QuotaTradeRecords" ToRole="AreaQuarterStatistics" />
+          <NavigationProperty Name="LimitedCompanies" Relationship="Self.FK_dbo_LimitedCompanies_dbo_QuotaTradeRecords_QuotaTradeRecordId" FromRole="QuotaTradeRecords" ToRole="LimitedCompanies" />
+        </EntityType>
+        <EntityType Name="QuotaTrades">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="QuotaTradeName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Delflag" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Guid" />
+          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Areas" Relationship="Self.FK_dbo_QuotaTrades_dbo_Areas_Id" FromRole="QuotaTrades" ToRole="Areas" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_dbo_QuotaTrades_dbo_Users_UserId" FromRole="QuotaTrades" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="UserRoleRLs" Relationship="Self.FK_dbo_UserRoleRLs_dbo_Roles_RoleId" FromRole="Roles" ToRole="UserRoleRLs" />
+        </EntityType>
+        <EntityType Name="Settings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Key" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="SmallScaleIndustries">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="SmallScaleIndustryName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Delflag" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Guid" />
+          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Areas" Relationship="Self.FK_dbo_SmallScaleIndustries_dbo_Areas_Id" FromRole="SmallScaleIndustries" ToRole="Areas" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_dbo_SmallScaleIndustries_dbo_Users_UserId" FromRole="SmallScaleIndustries" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="SmallScaleIndustryRecords">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="SelfEmployedCount" Type="Int32" Nullable="false" />
+          <Property Name="SelfEmployedCorrespondingPeriodCount" Type="Int32" Nullable="false" />
+          <Property Name="SmallBusinessCount" Type="Int32" Nullable="false" />
+          <Property Name="SmallBusinessCorrespondingPeriodCount" Type="Int32" Nullable="false" />
+          <Property Name="SmallBusinessAmount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="SmallBusinessCorrespondingPeriodAmount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Count" Type="Int32" Nullable="false" />
+          <Property Name="CorrespondingPeriodCount" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="CorrespondingPeriodAmount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="Delflag" Type="Int32" Nullable="false" />
+          <Property Name="ResponsibleForUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AreaQuarterStatisticId" Type="Guid" Nullable="false" />
+          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AreaQuarterStatistics" Relationship="Self.FK_dbo_SmallScaleIndustryRecords_dbo_AreaQuarterStatistics_AreaQuarterStatisticId" FromRole="SmallScaleIndustryRecords" ToRole="AreaQuarterStatistics" />
+          <NavigationProperty Name="Enterprises" Relationship="Self.FK_dbo_Enterprises_dbo_SmallScaleIndustryRecords_SmallScaleIndustryRecordId" FromRole="SmallScaleIndustryRecords" ToRole="Enterprises" />
+        </EntityType>
+        <EntityType Name="Tags">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="UserTagRLs" Relationship="Self.FK_dbo_UserTagRLs_dbo_Tags_TagId" FromRole="Tags" ToRole="UserTagRLs" />
+        </EntityType>
+        <EntityType Name="UserRoleRLs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="RoleId" Type="Guid" Nullable="false" />
+          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Roles" Relationship="Self.FK_dbo_UserRoleRLs_dbo_Roles_RoleId" FromRole="UserRoleRLs" ToRole="Roles" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_dbo_UserRoleRLs_dbo_Users_UserId" FromRole="UserRoleRLs" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="NickName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ImageKey" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="Int32" Nullable="false" />
+          <Property Name="Signature" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="Int32" Nullable="false" />
+          <Property Name="RegisterIp" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="RegisterAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="LastLoginTime" Type="DateTime" Precision="3" />
+          <Property Name="InternalNotes" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AreaQuarterStatistics" Relationship="Self.FK_dbo_AreaQuarterStatistics_dbo_Users_UserId" FromRole="Users" ToRole="AreaQuarterStatistics" />
+          <NavigationProperty Name="BasicGdpDatas" Relationship="Self.FK_dbo_BasicGdpDatas_dbo_Users_UserId" FromRole="Users" ToRole="BasicGdpDatas" />
+          <NavigationProperty Name="Images" Relationship="Self.FK_dbo_Images_dbo_Users_UserId" FromRole="Users" ToRole="Images" />
+          <NavigationProperty Name="PrimaryIndustries" Relationship="Self.FK_dbo_PrimaryIndustries_dbo_Users_UserId" FromRole="Users" ToRole="PrimaryIndustries" />
+          <NavigationProperty Name="QuotaTrades" Relationship="Self.FK_dbo_QuotaTrades_dbo_Users_UserId" FromRole="Users" ToRole="QuotaTrades" />
+          <NavigationProperty Name="SmallScaleIndustries" Relationship="Self.FK_dbo_SmallScaleIndustries_dbo_Users_UserId" FromRole="Users" ToRole="SmallScaleIndustries" />
+          <NavigationProperty Name="UserRoleRLs" Relationship="Self.FK_dbo_UserRoleRLs_dbo_Users_UserId" FromRole="Users" ToRole="UserRoleRLs" />
+          <NavigationProperty Name="UserTagRLs" Relationship="Self.FK_dbo_UserTagRLs_dbo_Users_UserId" FromRole="Users" ToRole="UserTagRLs" />
+        </EntityType>
+        <EntityType Name="UserTagRLs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="TagId" Type="Guid" Nullable="false" />
+          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Tags" Relationship="Self.FK_dbo_UserTagRLs_dbo_Tags_TagId" FromRole="UserTagRLs" ToRole="Tags" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_dbo_UserTagRLs_dbo_Users_UserId" FromRole="UserTagRLs" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Varieties">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="VarietyName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CategoryId" Type="Guid" Nullable="false" />
+          <Property Name="Delflag" Type="Int32" Nullable="false" />
+          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Categories" Relationship="Self.FK_dbo_Varieties_dbo_Categories_CategoryId" FromRole="Varieties" ToRole="Categories" />
+          <NavigationProperty Name="Crops" Relationship="Self.FK_dbo_Crops_dbo_Varieties_VarietyId" FromRole="Varieties" ToRole="Crops" />
+        </EntityType>
+        <Association Name="FK_dbo_AreaQuarterStatistics_dbo_Areas_AreaId">
+          <End Role="Areas" Type="Self.Areas" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AreaQuarterStatistics" Type="Self.AreaQuarterStatistics" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Areas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AreaQuarterStatistics">
+              <PropertyRef Name="AreaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AreaQuarterStatistics_dbo_QuarterStatistics_QuarterStatisticId">
+          <End Role="QuarterStatistics" Type="Self.QuarterStatistics" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AreaQuarterStatistics" Type="Self.AreaQuarterStatistics" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuarterStatistics">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AreaQuarterStatistics">
+              <PropertyRef Name="QuarterStatisticId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AreaQuarterStatistics_dbo_Users_UserId">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AreaQuarterStatistics" Type="Self.AreaQuarterStatistics" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AreaQuarterStatistics">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_BasicGdpDataRecords_dbo_AreaQuarterStatistics_AreaQuarterStatisticId">
+          <End Role="AreaQuarterStatistics" Type="Self.AreaQuarterStatistics" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BasicGdpDataRecords" Type="Self.BasicGdpDataRecords" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AreaQuarterStatistics">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BasicGdpDataRecords">
+              <PropertyRef Name="AreaQuarterStatisticId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_BasicGdpDatas_dbo_AreaQuarterStatistics_AreaQuarterStatisticId">
+          <End Role="AreaQuarterStatistics" Type="Self.AreaQuarterStatistics" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BasicGdpDatas" Type="Self.BasicGdpDatas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AreaQuarterStatistics">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BasicGdpDatas">
+              <PropertyRef Name="AreaQuarterStatisticId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_PrimaryIndustryRecords_dbo_AreaQuarterStatistics_AreaQuarterStatisticId">
+          <End Role="AreaQuarterStatistics" Type="Self.AreaQuarterStatistics" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PrimaryIndustryRecords" Type="Self.PrimaryIndustryRecords" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AreaQuarterStatistics">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PrimaryIndustryRecords">
+              <PropertyRef Name="AreaQuarterStatisticId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_QuotaTradeRecords_dbo_AreaQuarterStatistics_AreaQuarterStatisticId">
+          <End Role="AreaQuarterStatistics" Type="Self.AreaQuarterStatistics" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="QuotaTradeRecords" Type="Self.QuotaTradeRecords" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AreaQuarterStatistics">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="QuotaTradeRecords">
+              <PropertyRef Name="AreaQuarterStatisticId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_SmallScaleIndustryRecords_dbo_AreaQuarterStatistics_AreaQuarterStatisticId">
+          <End Role="AreaQuarterStatistics" Type="Self.AreaQuarterStatistics" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SmallScaleIndustryRecords" Type="Self.SmallScaleIndustryRecords" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AreaQuarterStatistics">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SmallScaleIndustryRecords">
+              <PropertyRef Name="AreaQuarterStatisticId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Areas_dbo_Areas_ParentRegionID">
+          <End Role="Areas" Type="Self.Areas" Multiplicity="0..1" />
+          <End Role="Areas1" Type="Self.Areas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Areas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Areas1">
+              <PropertyRef Name="ParentRegionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_BasicGdpDatas_dbo_Areas_Id">
+          <End Role="Areas" Type="Self.Areas" Multiplicity="1" />
+          <End Role="BasicGdpDatas" Type="Self.BasicGdpDatas" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Areas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BasicGdpDatas">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_PrimaryIndustries_dbo_Areas_Id">
+          <End Role="Areas" Type="Self.Areas" Multiplicity="1" />
+          <End Role="PrimaryIndustries" Type="Self.PrimaryIndustries" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Areas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PrimaryIndustries">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_QuotaTrades_dbo_Areas_Id">
+          <End Role="Areas" Type="Self.Areas" Multiplicity="1" />
+          <End Role="QuotaTrades" Type="Self.QuotaTrades" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Areas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="QuotaTrades">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_SmallScaleIndustries_dbo_Areas_Id">
+          <End Role="Areas" Type="Self.Areas" Multiplicity="1" />
+          <End Role="SmallScaleIndustries" Type="Self.SmallScaleIndustries" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Areas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SmallScaleIndustries">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_BasicGdpDataItemRecords_dbo_BasicGdpDataItems_BasicGdpDataItemId">
+          <End Role="BasicGdpDataItems" Type="Self.BasicGdpDataItems" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BasicGdpDataItemRecords" Type="Self.BasicGdpDataItemRecords" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BasicGdpDataItems">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BasicGdpDataItemRecords">
+              <PropertyRef Name="BasicGdpDataItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_BasicGdpDataItemRecords_dbo_BasicGdpDataRecords_BasicGdpDataRecordId">
+          <End Role="BasicGdpDataRecords" Type="Self.BasicGdpDataRecords" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BasicGdpDataItemRecords" Type="Self.BasicGdpDataItemRecords" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BasicGdpDataRecords">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BasicGdpDataItemRecords">
+              <PropertyRef Name="BasicGdpDataRecordId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_BasicGdpDatas_dbo_Users_UserId">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="BasicGdpDatas" Type="Self.BasicGdpDatas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BasicGdpDatas">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Categories_dbo_Industries_IndustryId">
+          <End Role="Industries" Type="Self.Industries" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Categories" Type="Self.Categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Industries">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Categories">
+              <PropertyRef Name="IndustryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Varieties_dbo_Categories_CategoryId">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Varieties" Type="Self.Varieties" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Varieties">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_CropAccounts_dbo_Crops_CropId">
+          <End Role="Crops" Type="Self.Crops" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CropAccounts" Type="Self.CropAccounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Crops">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CropAccounts">
+              <PropertyRef Name="CropId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_CropAccounts_dbo_PrimaryIndustryRecords_PrimaryIndustryRecordId">
+          <End Role="PrimaryIndustryRecords" Type="Self.PrimaryIndustryRecords" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CropAccounts" Type="Self.CropAccounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PrimaryIndustryRecords">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CropAccounts">
+              <PropertyRef Name="PrimaryIndustryRecordId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Crops_dbo_Varieties_VarietyId">
+          <End Role="Varieties" Type="Self.Varieties" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Crops" Type="Self.Crops" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Varieties">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Crops">
+              <PropertyRef Name="VarietyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Enterprises_dbo_SmallScaleIndustryRecords_SmallScaleIndustryRecordId">
+          <End Role="SmallScaleIndustryRecords" Type="Self.SmallScaleIndustryRecords" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Enterprises" Type="Self.Enterprises" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SmallScaleIndustryRecords">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Enterprises">
+              <PropertyRef Name="SmallScaleIndustryRecordId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Images_dbo_Users_UserId">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Images" Type="Self.Images" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Images">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_LimitedCompanies_dbo_QuotaTradeRecords_QuotaTradeRecordId">
+          <End Role="QuotaTradeRecords" Type="Self.QuotaTradeRecords" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LimitedCompanies" Type="Self.LimitedCompanies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuotaTradeRecords">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LimitedCompanies">
+              <PropertyRef Name="QuotaTradeRecordId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_PrimaryIndustries_dbo_Users_UserId">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="PrimaryIndustries" Type="Self.PrimaryIndustries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PrimaryIndustries">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_QuotaTrades_dbo_Users_UserId">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="QuotaTrades" Type="Self.QuotaTrades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="QuotaTrades">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UserRoleRLs_dbo_Roles_RoleId">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="UserRoleRLs" Type="Self.UserRoleRLs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRoleRLs">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_SmallScaleIndustries_dbo_Users_UserId">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="SmallScaleIndustries" Type="Self.SmallScaleIndustries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SmallScaleIndustries">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UserTagRLs_dbo_Tags_TagId">
+          <End Role="Tags" Type="Self.Tags" Multiplicity="1" />
+          <End Role="UserTagRLs" Type="Self.UserTagRLs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tags">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserTagRLs">
+              <PropertyRef Name="TagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UserRoleRLs_dbo_Users_UserId">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserRoleRLs" Type="Self.UserRoleRLs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRoleRLs">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UserTagRLs_dbo_Users_UserId">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserTagRLs" Type="Self.UserTagRLs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserTagRLs">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GdpStatisticEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="AreaQuarterStatistics" EntityType="Self.AreaQuarterStatistics" />
+          <EntitySet Name="Areas" EntityType="Self.Areas" />
+          <EntitySet Name="BasicGdpDataItemRecords" EntityType="Self.BasicGdpDataItemRecords" />
+          <EntitySet Name="BasicGdpDataItems" EntityType="Self.BasicGdpDataItems" />
+          <EntitySet Name="BasicGdpDataRecords" EntityType="Self.BasicGdpDataRecords" />
+          <EntitySet Name="BasicGdpDatas" EntityType="Self.BasicGdpDatas" />
+          <EntitySet Name="Categories" EntityType="Self.Categories" />
+          <EntitySet Name="CropAccounts" EntityType="Self.CropAccounts" />
+          <EntitySet Name="Crops" EntityType="Self.Crops" />
+          <EntitySet Name="Enterprises" EntityType="Self.Enterprises" />
+          <EntitySet Name="Images" EntityType="Self.Images" />
+          <EntitySet Name="Industries" EntityType="Self.Industries" />
+          <EntitySet Name="LimitedCompanies" EntityType="Self.LimitedCompanies" />
+          <EntitySet Name="PrimaryIndustries" EntityType="Self.PrimaryIndustries" />
+          <EntitySet Name="PrimaryIndustryRecords" EntityType="Self.PrimaryIndustryRecords" />
+          <EntitySet Name="QuarterStatistics" EntityType="Self.QuarterStatistics" />
+          <EntitySet Name="QuotaTradeRecords" EntityType="Self.QuotaTradeRecords" />
+          <EntitySet Name="QuotaTrades" EntityType="Self.QuotaTrades" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" />
+          <EntitySet Name="Settings" EntityType="Self.Settings" />
+          <EntitySet Name="SmallScaleIndustries" EntityType="Self.SmallScaleIndustries" />
+          <EntitySet Name="SmallScaleIndustryRecords" EntityType="Self.SmallScaleIndustryRecords" />
+          <EntitySet Name="Tags" EntityType="Self.Tags" />
+          <EntitySet Name="UserRoleRLs" EntityType="Self.UserRoleRLs" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="UserTagRLs" EntityType="Self.UserTagRLs" />
+          <EntitySet Name="Varieties" EntityType="Self.Varieties" />
+          <AssociationSet Name="FK_dbo_AreaQuarterStatistics_dbo_Areas_AreaId" Association="Self.FK_dbo_AreaQuarterStatistics_dbo_Areas_AreaId">
+            <End Role="Areas" EntitySet="Areas" />
+            <End Role="AreaQuarterStatistics" EntitySet="AreaQuarterStatistics" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AreaQuarterStatistics_dbo_QuarterStatistics_QuarterStatisticId" Association="Self.FK_dbo_AreaQuarterStatistics_dbo_QuarterStatistics_QuarterStatisticId">
+            <End Role="QuarterStatistics" EntitySet="QuarterStatistics" />
+            <End Role="AreaQuarterStatistics" EntitySet="AreaQuarterStatistics" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AreaQuarterStatistics_dbo_Users_UserId" Association="Self.FK_dbo_AreaQuarterStatistics_dbo_Users_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="AreaQuarterStatistics" EntitySet="AreaQuarterStatistics" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_BasicGdpDataRecords_dbo_AreaQuarterStatistics_AreaQuarterStatisticId" Association="Self.FK_dbo_BasicGdpDataRecords_dbo_AreaQuarterStatistics_AreaQuarterStatisticId">
+            <End Role="AreaQuarterStatistics" EntitySet="AreaQuarterStatistics" />
+            <End Role="BasicGdpDataRecords" EntitySet="BasicGdpDataRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_BasicGdpDatas_dbo_AreaQuarterStatistics_AreaQuarterStatisticId" Association="Self.FK_dbo_BasicGdpDatas_dbo_AreaQuarterStatistics_AreaQuarterStatisticId">
+            <End Role="AreaQuarterStatistics" EntitySet="AreaQuarterStatistics" />
+            <End Role="BasicGdpDatas" EntitySet="BasicGdpDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_PrimaryIndustryRecords_dbo_AreaQuarterStatistics_AreaQuarterStatisticId" Association="Self.FK_dbo_PrimaryIndustryRecords_dbo_AreaQuarterStatistics_AreaQuarterStatisticId">
+            <End Role="AreaQuarterStatistics" EntitySet="AreaQuarterStatistics" />
+            <End Role="PrimaryIndustryRecords" EntitySet="PrimaryIndustryRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_QuotaTradeRecords_dbo_AreaQuarterStatistics_AreaQuarterStatisticId" Association="Self.FK_dbo_QuotaTradeRecords_dbo_AreaQuarterStatistics_AreaQuarterStatisticId">
+            <End Role="AreaQuarterStatistics" EntitySet="AreaQuarterStatistics" />
+            <End Role="QuotaTradeRecords" EntitySet="QuotaTradeRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_SmallScaleIndustryRecords_dbo_AreaQuarterStatistics_AreaQuarterStatisticId" Association="Self.FK_dbo_SmallScaleIndustryRecords_dbo_AreaQuarterStatistics_AreaQuarterStatisticId">
+            <End Role="AreaQuarterStatistics" EntitySet="AreaQuarterStatistics" />
+            <End Role="SmallScaleIndustryRecords" EntitySet="SmallScaleIndustryRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Areas_dbo_Areas_ParentRegionID" Association="Self.FK_dbo_Areas_dbo_Areas_ParentRegionID">
+            <End Role="Areas" EntitySet="Areas" />
+            <End Role="Areas1" EntitySet="Areas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_BasicGdpDatas_dbo_Areas_Id" Association="Self.FK_dbo_BasicGdpDatas_dbo_Areas_Id">
+            <End Role="Areas" EntitySet="Areas" />
+            <End Role="BasicGdpDatas" EntitySet="BasicGdpDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_PrimaryIndustries_dbo_Areas_Id" Association="Self.FK_dbo_PrimaryIndustries_dbo_Areas_Id">
+            <End Role="Areas" EntitySet="Areas" />
+            <End Role="PrimaryIndustries" EntitySet="PrimaryIndustries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_QuotaTrades_dbo_Areas_Id" Association="Self.FK_dbo_QuotaTrades_dbo_Areas_Id">
+            <End Role="Areas" EntitySet="Areas" />
+            <End Role="QuotaTrades" EntitySet="QuotaTrades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_SmallScaleIndustries_dbo_Areas_Id" Association="Self.FK_dbo_SmallScaleIndustries_dbo_Areas_Id">
+            <End Role="Areas" EntitySet="Areas" />
+            <End Role="SmallScaleIndustries" EntitySet="SmallScaleIndustries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_BasicGdpDataItemRecords_dbo_BasicGdpDataItems_BasicGdpDataItemId" Association="Self.FK_dbo_BasicGdpDataItemRecords_dbo_BasicGdpDataItems_BasicGdpDataItemId">
+            <End Role="BasicGdpDataItems" EntitySet="BasicGdpDataItems" />
+            <End Role="BasicGdpDataItemRecords" EntitySet="BasicGdpDataItemRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_BasicGdpDataItemRecords_dbo_BasicGdpDataRecords_BasicGdpDataRecordId" Association="Self.FK_dbo_BasicGdpDataItemRecords_dbo_BasicGdpDataRecords_BasicGdpDataRecordId">
+            <End Role="BasicGdpDataRecords" EntitySet="BasicGdpDataRecords" />
+            <End Role="BasicGdpDataItemRecords" EntitySet="BasicGdpDataItemRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_BasicGdpDatas_dbo_Users_UserId" Association="Self.FK_dbo_BasicGdpDatas_dbo_Users_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="BasicGdpDatas" EntitySet="BasicGdpDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Categories_dbo_Industries_IndustryId" Association="Self.FK_dbo_Categories_dbo_Industries_IndustryId">
+            <End Role="Industries" EntitySet="Industries" />
+            <End Role="Categories" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Varieties_dbo_Categories_CategoryId" Association="Self.FK_dbo_Varieties_dbo_Categories_CategoryId">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Varieties" EntitySet="Varieties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_CropAccounts_dbo_Crops_CropId" Association="Self.FK_dbo_CropAccounts_dbo_Crops_CropId">
+            <End Role="Crops" EntitySet="Crops" />
+            <End Role="CropAccounts" EntitySet="CropAccounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_CropAccounts_dbo_PrimaryIndustryRecords_PrimaryIndustryRecordId" Association="Self.FK_dbo_CropAccounts_dbo_PrimaryIndustryRecords_PrimaryIndustryRecordId">
+            <End Role="PrimaryIndustryRecords" EntitySet="PrimaryIndustryRecords" />
+            <End Role="CropAccounts" EntitySet="CropAccounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Crops_dbo_Varieties_VarietyId" Association="Self.FK_dbo_Crops_dbo_Varieties_VarietyId">
+            <End Role="Varieties" EntitySet="Varieties" />
+            <End Role="Crops" EntitySet="Crops" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Enterprises_dbo_SmallScaleIndustryRecords_SmallScaleIndustryRecordId" Association="Self.FK_dbo_Enterprises_dbo_SmallScaleIndustryRecords_SmallScaleIndustryRecordId">
+            <End Role="SmallScaleIndustryRecords" EntitySet="SmallScaleIndustryRecords" />
+            <End Role="Enterprises" EntitySet="Enterprises" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Images_dbo_Users_UserId" Association="Self.FK_dbo_Images_dbo_Users_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Images" EntitySet="Images" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_LimitedCompanies_dbo_QuotaTradeRecords_QuotaTradeRecordId" Association="Self.FK_dbo_LimitedCompanies_dbo_QuotaTradeRecords_QuotaTradeRecordId">
+            <End Role="QuotaTradeRecords" EntitySet="QuotaTradeRecords" />
+            <End Role="LimitedCompanies" EntitySet="LimitedCompanies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_PrimaryIndustries_dbo_Users_UserId" Association="Self.FK_dbo_PrimaryIndustries_dbo_Users_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="PrimaryIndustries" EntitySet="PrimaryIndustries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_QuotaTrades_dbo_Users_UserId" Association="Self.FK_dbo_QuotaTrades_dbo_Users_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="QuotaTrades" EntitySet="QuotaTrades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UserRoleRLs_dbo_Roles_RoleId" Association="Self.FK_dbo_UserRoleRLs_dbo_Roles_RoleId">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="UserRoleRLs" EntitySet="UserRoleRLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_SmallScaleIndustries_dbo_Users_UserId" Association="Self.FK_dbo_SmallScaleIndustries_dbo_Users_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="SmallScaleIndustries" EntitySet="SmallScaleIndustries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UserTagRLs_dbo_Tags_TagId" Association="Self.FK_dbo_UserTagRLs_dbo_Tags_TagId">
+            <End Role="Tags" EntitySet="Tags" />
+            <End Role="UserTagRLs" EntitySet="UserTagRLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UserRoleRLs_dbo_Users_UserId" Association="Self.FK_dbo_UserRoleRLs_dbo_Users_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserRoleRLs" EntitySet="UserRoleRLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UserTagRLs_dbo_Users_UserId" Association="Self.FK_dbo_UserTagRLs_dbo_Users_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserTagRLs" EntitySet="UserTagRLs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GdpStatisticModelStoreContainer" CdmEntityContainer="GdpStatisticEntities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="GdpStatisticModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AreaQuarterStatistics">
+            <EntityTypeMapping TypeName="GdpStatisticModel.AreaQuarterStatistics">
+              <MappingFragment StoreEntitySet="AreaQuarterStatistics">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="QuarterName" ColumnName="QuarterName" />
+                <ScalarProperty Name="QuarterYear" ColumnName="QuarterYear" />
+                <ScalarProperty Name="Quarter" ColumnName="Quarter" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Delflag" ColumnName="Delflag" />
+                <ScalarProperty Name="ControllerName" ColumnName="ControllerName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+                <ScalarProperty Name="QuarterStatisticId" ColumnName="QuarterStatisticId" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="LastUpdatedTime" ColumnName="LastUpdatedTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Areas">
+            <EntityTypeMapping TypeName="GdpStatisticModel.Areas">
+              <MappingFragment StoreEntitySet="Areas">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AreaCode" ColumnName="AreaCode" />
+                <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
+                <ScalarProperty Name="ParentRegionID" ColumnName="ParentRegionID" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="LastUpdatedTime" ColumnName="LastUpdatedTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BasicGdpDataItemRecords">
+            <EntityTypeMapping TypeName="GdpStatisticModel.BasicGdpDataItemRecords">
+              <MappingFragment StoreEntitySet="BasicGdpDataItemRecords">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="CorrespondingPeriodAmount" ColumnName="CorrespondingPeriodAmount" />
+                <ScalarProperty Name="BasicGdpDataItemId" ColumnName="BasicGdpDataItemId" />
+                <ScalarProperty Name="BasicGdpDataRecordId" ColumnName="BasicGdpDataRecordId" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="LastUpdatedTime" ColumnName="LastUpdatedTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BasicGdpDataItems">
+            <EntityTypeMapping TypeName="GdpStatisticModel.BasicGdpDataItems">
+              <MappingFragment StoreEntitySet="BasicGdpDataItems">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Delflag" ColumnName="Delflag" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="LastUpdatedTime" ColumnName="LastUpdatedTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BasicGdpDataRecords">
+            <EntityTypeMapping TypeName="GdpStatisticModel.BasicGdpDataRecords">
+              <MappingFragment StoreEntitySet="BasicGdpDataRecords">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Delflag" ColumnName="Delflag" />
+                <ScalarProperty Name="ResponsibleForUser" ColumnName="ResponsibleForUser" />
+                <ScalarProperty Name="AreaQuarterStatisticId" ColumnName="AreaQuarterStatisticId" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="LastUpdatedTime" ColumnName="LastUpdatedTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BasicGdpDatas">
+            <EntityTypeMapping TypeName="GdpStatisticModel.BasicGdpDatas">
+              <MappingFragment StoreEntitySet="BasicGdpDatas">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ReportName" ColumnName="ReportName" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Delflag" ColumnName="Delflag" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="AreaQuarterStatisticId" ColumnName="AreaQuarterStatisticId" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="LastUpdatedTime" ColumnName="LastUpdatedTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="GdpStatisticModel.Categories">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="IndustryId" ColumnName="IndustryId" />
+                <ScalarProperty Name="Delflag" ColumnName="Delflag" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="LastUpdatedTime" ColumnName="LastUpdatedTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CropAccounts">
+            <EntityTypeMapping TypeName="GdpStatisticModel.CropAccounts">
+              <MappingFragment StoreEntitySet="CropAccounts">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CropName" ColumnName="CropName" />
+                <ScalarProperty Name="CropId" ColumnName="CropId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Yields" ColumnName="Yields" />
+                <ScalarProperty Name="PrimaryIndustryRecordId" ColumnName="PrimaryIndustryRecordId" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="LastUpdatedTime" ColumnName="LastUpdatedTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Crops">
+            <EntityTypeMapping TypeName="GdpStatisticModel.Crops">
+              <MappingFragment StoreEntitySet="Crops">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CropName" ColumnName="CropName" />
+                <ScalarProperty Name="Delflag" ColumnName="Delflag" />
+                <ScalarProperty Name="VarietyId" ColumnName="VarietyId" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="LastUpdatedTime" ColumnName="LastUpdatedTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Enterprises">
+            <EntityTypeMapping TypeName="GdpStatisticModel.Enterprises">
+              <MappingFragment StoreEntitySet="Enterprises">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SmallScaleIndustryRecordId" ColumnName="SmallScaleIndustryRecordId" />
+                <ScalarProperty Name="IndustryCode" ColumnName="IndustryCode" />
+                <ScalarProperty Name="PhoneNum" ColumnName="PhoneNum" />
+                <ScalarProperty Name="OrganizationCode" ColumnName="OrganizationCode" />
+                <ScalarProperty Name="LegalPersonCode" ColumnName="LegalPersonCode" />
+                <ScalarProperty Name="EnterpriseName" ColumnName="EnterpriseName" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="CorrespondingPeriodAmount" ColumnName="CorrespondingPeriodAmount" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="LastUpdatedTime" ColumnName="LastUpdatedTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Images">
+            <EntityTypeMapping TypeName="GdpStatisticModel.Images">
+              <MappingFragment StoreEntitySet="Images">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OriginalPath" ColumnName="OriginalPath" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Length" ColumnName="Length" />
+                <ScalarProperty Name="Key" ColumnName="Key" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="LastUpdatedTime" ColumnName="LastUpdatedTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Industries">
+            <EntityTypeMapping TypeName="GdpStatisticModel.Industries">
+              <MappingFragment StoreEntitySet="Industries">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IndustryName" ColumnName="IndustryName" />
+                <ScalarProperty Name="Delflag" ColumnName="Delflag" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="LastUpdatedTime" ColumnName="LastUpdatedTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LimitedCompanies">
+            <EntityTypeMapping TypeName="GdpStatisticModel.LimitedCompanies">
+              <MappingFragment StoreEntitySet="LimitedCompanies">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="LimitedCompanyName" ColumnName="LimitedCompanyName" />
+                <ScalarProperty Name="LimitedCompanyAmount" ColumnName="LimitedCompanyAmount" />
+                <ScalarProperty Name="LimitedCompanyCorrespondingPeriodAmount" ColumnName="LimitedCompanyCorrespondingPeriodAmount" />
+                <ScalarProperty Name="LimitedCompanyEmployeeCount" ColumnName="LimitedCompanyEmployeeCount" />
+                <ScalarProperty Name="LimitedCompanyEmployeeCorrespondingPeriodCount" ColumnName="LimitedCompanyEmployeeCorrespondingPeriodCount" />
+                <ScalarProperty Name="QuotaTradeRecordId" ColumnName="QuotaTradeRecordId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Delflag" ColumnName="Delflag" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="LastUpdatedTime" ColumnName="LastUpdatedTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PrimaryIndustries">
+            <EntityTypeMapping TypeName="GdpStatisticModel.PrimaryIndustries">
+              <MappingFragment StoreEntitySet="PrimaryIndustries">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PrimaryIndustryName" ColumnName="PrimaryIndustryName" />
+                <ScalarProperty Name="Delflag" ColumnName="Delflag" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="LastUpdatedTime" ColumnName="LastUpdatedTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PrimaryIndustryRecords">
+            <EntityTypeMapping TypeName="GdpStatisticModel.PrimaryIndustryRecords">
+              <MappingFragment StoreEntitySet="PrimaryIndustryRecords">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Delflag" ColumnName="Delflag" />
+                <ScalarProperty Name="ApplyDelay" ColumnName="ApplyDelay" />
+                <ScalarProperty Name="DelayStatus" ColumnName="DelayStatus" />
+                <ScalarProperty Name="ResponsibleForUser" ColumnName="ResponsibleForUser" />
+                <ScalarProperty Name="AreaQuarterStatisticId" ColumnName="AreaQuarterStatisticId" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="LastUpdatedTime" ColumnName="LastUpdatedTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuarterStatistics">
+            <EntityTypeMapping TypeName="GdpStatisticModel.QuarterStatistics">
+              <MappingFragment StoreEntitySet="QuarterStatistics">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="QuarterName" ColumnName="QuarterName" />
+                <ScalarProperty Name="QuarterYear" ColumnName="QuarterYear" />
+                <ScalarProperty Name="Quarter" ColumnName="Quarter" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Delflag" ColumnName="Delflag" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="LastUpdatedTime" ColumnName="LastUpdatedTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuotaTradeRecords">
+            <EntityTypeMapping TypeName="GdpStatisticModel.QuotaTradeRecords">
+              <MappingFragment StoreEntitySet="QuotaTradeRecords">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="WholesaleAndRetailCount" ColumnName="WholesaleAndRetailCount" />
+                <ScalarProperty Name="WholesaleAndRetailCorrespondingPeriodCount" ColumnName="WholesaleAndRetailCorrespondingPeriodCount" />
+                <ScalarProperty Name="WholesaleAndRetailEmployeeAvgCount" ColumnName="WholesaleAndRetailEmployeeAvgCount" />
+                <ScalarProperty Name="WholesaleAndRetailEmployeeAvgCorrespondingPeriodCount" ColumnName="WholesaleAndRetailEmployeeAvgCorrespondingPeriodCount" />
+                <ScalarProperty Name="LimitedCompanyAmount" ColumnName="LimitedCompanyAmount" />
+                <ScalarProperty Name="LimitedCompanyCorrespondingPeriodAmount" ColumnName="LimitedCompanyCorrespondingPeriodAmount" />
+                <ScalarProperty Name="LimitedCompanyEmployeeCount" ColumnName="LimitedCompanyEmployeeCount" />
+                <ScalarProperty Name="LimitedCompanyEmployeeCorrespondingPeriodCount" ColumnName="LimitedCompanyEmployeeCorrespondingPeriodCount" />
+                <ScalarProperty Name="ResponsibleForUser" ColumnName="ResponsibleForUser" />
+                <ScalarProperty Name="AreaQuarterStatisticId" ColumnName="AreaQuarterStatisticId" />
+                <ScalarProperty Name="Delflag" ColumnName="Delflag" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="LastUpdatedTime" ColumnName="LastUpdatedTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuotaTrades">
+            <EntityTypeMapping TypeName="GdpStatisticModel.QuotaTrades">
+              <MappingFragment StoreEntitySet="QuotaTrades">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="QuotaTradeName" ColumnName="QuotaTradeName" />
+                <ScalarProperty Name="Delflag" ColumnName="Delflag" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="LastUpdatedTime" ColumnName="LastUpdatedTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="GdpStatisticModel.Roles">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="LastUpdatedTime" ColumnName="LastUpdatedTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Settings">
+            <EntityTypeMapping TypeName="GdpStatisticModel.Settings">
+              <MappingFragment StoreEntitySet="Settings">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Key" ColumnName="Key" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="LastUpdatedTime" ColumnName="LastUpdatedTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SmallScaleIndustries">
+            <EntityTypeMapping TypeName="GdpStatisticModel.SmallScaleIndustries">
+              <MappingFragment StoreEntitySet="SmallScaleIndustries">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SmallScaleIndustryName" ColumnName="SmallScaleIndustryName" />
+                <ScalarProperty Name="Delflag" ColumnName="Delflag" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="LastUpdatedTime" ColumnName="LastUpdatedTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SmallScaleIndustryRecords">
+            <EntityTypeMapping TypeName="GdpStatisticModel.SmallScaleIndustryRecords">
+              <MappingFragment StoreEntitySet="SmallScaleIndustryRecords">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="SelfEmployedCount" ColumnName="SelfEmployedCount" />
+                <ScalarProperty Name="SelfEmployedCorrespondingPeriodCount" ColumnName="SelfEmployedCorrespondingPeriodCount" />
+                <ScalarProperty Name="SmallBusinessCount" ColumnName="SmallBusinessCount" />
+                <ScalarProperty Name="SmallBusinessCorrespondingPeriodCount" ColumnName="SmallBusinessCorrespondingPeriodCount" />
+                <ScalarProperty Name="SmallBusinessAmount" ColumnName="SmallBusinessAmount" />
+                <ScalarProperty Name="SmallBusinessCorrespondingPeriodAmount" ColumnName="SmallBusinessCorrespondingPeriodAmount" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="CorrespondingPeriodCount" ColumnName="CorrespondingPeriodCount" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="CorrespondingPeriodAmount" ColumnName="CorrespondingPeriodAmount" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Delflag" ColumnName="Delflag" />
+                <ScalarProperty Name="ResponsibleForUser" ColumnName="ResponsibleForUser" />
+                <ScalarProperty Name="AreaQuarterStatisticId" ColumnName="AreaQuarterStatisticId" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="LastUpdatedTime" ColumnName="LastUpdatedTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tags">
+            <EntityTypeMapping TypeName="GdpStatisticModel.Tags">
+              <MappingFragment StoreEntitySet="Tags">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="LastUpdatedTime" ColumnName="LastUpdatedTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoleRLs">
+            <EntityTypeMapping TypeName="GdpStatisticModel.UserRoleRLs">
+              <MappingFragment StoreEntitySet="UserRoleRLs">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="LastUpdatedTime" ColumnName="LastUpdatedTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="GdpStatisticModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="NickName" ColumnName="NickName" />
+                <ScalarProperty Name="ImageKey" ColumnName="ImageKey" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Signature" ColumnName="Signature" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="RegisterIp" ColumnName="RegisterIp" />
+                <ScalarProperty Name="RegisterAddress" ColumnName="RegisterAddress" />
+                <ScalarProperty Name="LastLoginTime" ColumnName="LastLoginTime" />
+                <ScalarProperty Name="InternalNotes" ColumnName="InternalNotes" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="LastUpdatedTime" ColumnName="LastUpdatedTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTagRLs">
+            <EntityTypeMapping TypeName="GdpStatisticModel.UserTagRLs">
+              <MappingFragment StoreEntitySet="UserTagRLs">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="TagId" ColumnName="TagId" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="LastUpdatedTime" ColumnName="LastUpdatedTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Varieties">
+            <EntityTypeMapping TypeName="GdpStatisticModel.Varieties">
+              <MappingFragment StoreEntitySet="Varieties">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="VarietyName" ColumnName="VarietyName" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Delflag" ColumnName="Delflag" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="LastUpdatedTime" ColumnName="LastUpdatedTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

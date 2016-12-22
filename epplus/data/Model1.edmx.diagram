@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="24f8a16a7cfa4c4c82d664a63ca52b07" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="GdpStatisticModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="GdpStatisticModel.AreaQuarterStatistics" Width="1.5" PointX="6" PointY="28" />
+        <EntityTypeShape EntityType="GdpStatisticModel.Areas" Width="1.5" PointX="3.75" PointY="25.875" />
+        <EntityTypeShape EntityType="GdpStatisticModel.BasicGdpDataItemRecords" Width="1.5" PointX="10.5" PointY="40.125" />
+        <EntityTypeShape EntityType="GdpStatisticModel.BasicGdpDataItems" Width="1.5" PointX="8.25" PointY="58.625" />
+        <EntityTypeShape EntityType="GdpStatisticModel.BasicGdpDataRecords" Width="1.5" PointX="8.25" PointY="41.25" />
+        <EntityTypeShape EntityType="GdpStatisticModel.BasicGdpDatas" Width="1.5" PointX="3" PointY="34.75" />
+        <EntityTypeShape EntityType="GdpStatisticModel.Categories" Width="1.5" PointX="3.75" PointY="6.75" />
+        <EntityTypeShape EntityType="GdpStatisticModel.ConstructionIndustries" Width="1.5" PointX="8.25" PointY="38.125" />
+        <EntityTypeShape EntityType="GdpStatisticModel.ConstructionIndustryDatas" Width="1.5" PointX="6" PointY="20" />
+        <EntityTypeShape EntityType="GdpStatisticModel.CropAccounts" Width="1.5" PointX="10.5" PointY="18.5" />
+        <EntityTypeShape EntityType="GdpStatisticModel.Crops" Width="1.5" PointX="8.25" PointY="6.75" />
+        <EntityTypeShape EntityType="GdpStatisticModel.Enterprises" Width="1.5" PointX="10.5" PointY="27.125" />
+        <EntityTypeShape EntityType="GdpStatisticModel.EstateDatas" Width="1.5" PointX="10.5" PointY="49" />
+        <EntityTypeShape EntityType="GdpStatisticModel.EstatePractitionerDatas" Width="1.5" PointX="10.5" PointY="22.5" />
+        <EntityTypeShape EntityType="GdpStatisticModel.EstatePractitioners" Width="1.5" PointX="8.25" PointY="22.5" />
+        <EntityTypeShape EntityType="GdpStatisticModel.Estates" Width="1.5" PointX="8.25" PointY="49" />
+        <EntityTypeShape EntityType="GdpStatisticModel.Images" Width="1.5" PointX="3" PointY="94.875" />
+        <EntityTypeShape EntityType="GdpStatisticModel.Industries" Width="1.5" PointX="1.5" PointY="6.75" />
+        <EntityTypeShape EntityType="GdpStatisticModel.IndustriesBasicDatas" Width="1.5" PointX="13" PointY="23.5" />
+        <EntityTypeShape EntityType="GdpStatisticModel.IndustryIncrements" Width="1.5" PointX="6" PointY="14.25" />
+        <EntityTypeShape EntityType="GdpStatisticModel.LargeAccommodationCateringDatas" Width="1.5" PointX="10.5" PointY="10.75" />
+        <EntityTypeShape EntityType="GdpStatisticModel.LargeAccommodationCaterings" Width="1.5" PointX="8.25" PointY="10.75" />
+        <EntityTypeShape EntityType="GdpStatisticModel.LargeIndustrialDatas" Width="1.5" PointX="10.5" PointY="14.375" />
+        <EntityTypeShape EntityType="GdpStatisticModel.LargeIndustrials" Width="1.5" PointX="8.25" PointY="14.5" />
+        <EntityTypeShape EntityType="GdpStatisticModel.LargeWholesaleAndRetailDatas" Width="1.5" PointX="10.5" PointY="45.25" />
+        <EntityTypeShape EntityType="GdpStatisticModel.LargeWholesaleAndRetails" Width="1.5" PointX="8.25" PointY="45.375" />
+        <EntityTypeShape EntityType="GdpStatisticModel.LimitedCompanies" Width="1.5" PointX="10.5" PointY="53.375" />
+        <EntityTypeShape EntityType="GdpStatisticModel.PrimaryIndustries" Width="1.5" PointX="6" PointY="38.875" />
+        <EntityTypeShape EntityType="GdpStatisticModel.PrimaryIndustryBaseIncrements" Width="1.5" PointX="6" PointY="25" />
+        <EntityTypeShape EntityType="GdpStatisticModel.PrimaryIndustryRecords" Width="1.5" PointX="8.25" PointY="18.125" />
+        <EntityTypeShape EntityType="GdpStatisticModel.QuarterStatistics" Width="1.5" PointX="3.75" PointY="20.375" />
+        <EntityTypeShape EntityType="GdpStatisticModel.QuotaTradeRecords" Width="1.5" PointX="8.25" PointY="52.625" />
+        <EntityTypeShape EntityType="GdpStatisticModel.QuotaTrades" Width="1.5" PointX="6" PointY="34.875" />
+        <EntityTypeShape EntityType="GdpStatisticModel.Roles" Width="1.5" PointX="0.75" PointY="30.125" />
+        <EntityTypeShape EntityType="GdpStatisticModel.Settings" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="GdpStatisticModel.SmallScaleIndustries" Width="1.5" PointX="9" PointY="34.875" />
+        <EntityTypeShape EntityType="GdpStatisticModel.SmallScaleIndustryRecords" Width="1.5" PointX="8.25" PointY="26.125" />
+        <EntityTypeShape EntityType="GdpStatisticModel.Tags" Width="1.5" PointX="0.75" PointY="40.125" />
+        <EntityTypeShape EntityType="GdpStatisticModel.UserRoleRLs" Width="1.5" PointX="3" PointY="30.875" />
+        <EntityTypeShape EntityType="GdpStatisticModel.Users" Width="1.5" PointX="0.75" PointY="33.5" />
+        <EntityTypeShape EntityType="GdpStatisticModel.UserTagRLs" Width="1.5" PointX="3" PointY="38.875" />
+        <EntityTypeShape EntityType="GdpStatisticModel.Varieties" Width="1.5" PointX="6" PointY="6.75" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_AreaQuarterStatistics_dbo_Areas_AreaId" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_AreaQuarterStatistics_dbo_QuarterStatistics_QuarterStatisticId" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_AreaQuarterStatistics_dbo_Users_UserId" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_BasicGdpDataRecords_dbo_AreaQuarterStatistics_AreaQuarterStatisticId" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_ConstructionIndustries_dbo_AreaQuarterStatistics_AreaQuarterStatisticId" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_EstatePractitioners_dbo_AreaQuarterStatistics_AreaQuarterStatisticId" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_Estates_dbo_AreaQuarterStatistics_AreaQuarterStatisticId" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_LargeAccommodationCaterings_dbo_AreaQuarterStatistics_AreaQuarterStatisticId" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_LargeIndustrials_dbo_AreaQuarterStatistics_AreaQuarterStatisticId" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_LargeWholesaleAndRetails_dbo_AreaQuarterStatistics_AreaQuarterStatisticId" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_PrimaryIndustryRecords_dbo_AreaQuarterStatistics_AreaQuarterStatisticId" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_QuotaTradeRecords_dbo_AreaQuarterStatistics_AreaQuarterStatisticId" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_SmallScaleIndustryRecords_dbo_AreaQuarterStatistics_AreaQuarterStatisticId" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_Areas_dbo_Areas_ParentRegionID" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_BasicGdpDatas_dbo_Areas_Id" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_IndustriesBasicDatas_dbo_Areas_AreaId" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_PrimaryIndustries_dbo_Areas_Id" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_QuotaTrades_dbo_Areas_Id" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_SmallScaleIndustries_dbo_Areas_Id" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_BasicGdpDataItemRecords_dbo_BasicGdpDataItems_BasicGdpDataItemId" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_BasicGdpDataItemRecords_dbo_BasicGdpDataRecords_BasicGdpDataRecordId" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_BasicGdpDatas_dbo_Users_UserId" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_Categories_dbo_Industries_IndustryId" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_Varieties_dbo_Categories_CategoryId" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_ConstructionIndustryDatas_dbo_QuarterStatistics_QuarterStatisticId" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_CropAccounts_dbo_Crops_CropId" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_CropAccounts_dbo_PrimaryIndustryRecords_PrimaryIndustryRecordId" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_Crops_dbo_Varieties_VarietyId" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_Enterprises_dbo_SmallScaleIndustryRecords_SmallScaleIndustryRecordId" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_EstateDatas_dbo_Estates_EstateId" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_EstatePractitionerDatas_dbo_EstatePractitioners_EstatePractitionerId" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_Images_dbo_Users_UserId" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_IndustryIncrements_dbo_Industries_IndustryId" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_IndustriesBasicDatas_dbo_QuarterStatistics_QuarterStatisticId" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_IndustryIncrements_dbo_QuarterStatistics_QuarterStatisticId" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_LargeAccommodationCateringDatas_dbo_LargeAccommodationCaterings_LargeAccommodationCateringId" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_LargeIndustrialDatas_dbo_LargeIndustrials_LargeIndustrialId" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_LargeWholesaleAndRetailDatas_dbo_LargeWholesaleAndRetails_LargeWholesaleAndRetailId" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_LimitedCompanies_dbo_QuotaTradeRecords_QuotaTradeRecordId" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_PrimaryIndustries_dbo_Users_UserId" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_PrimaryIndustryBaseIncrements_dbo_QuarterStatistics_QuarterStatisticId" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_QuotaTrades_dbo_Users_UserId" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_UserRoleRLs_dbo_Roles_RoleId" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_SmallScaleIndustries_dbo_Users_UserId" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_UserTagRLs_dbo_Tags_TagId" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_UserRoleRLs_dbo_Users_UserId" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_UserTagRLs_dbo_Users_UserId" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,651 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GdpStatisticModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Images">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="OriginalPath" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="Width" Type="int" Nullable="false" />
+          <Property Name="Height" Type="int" Nullable="false" />
+          <Property Name="Length" Type="int" Nullable="false" />
+          <Property Name="Key" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedTime" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Lodgings">
+          <Key>
+            <PropertyRef Name="LodgingId" />
+          </Key>
+          <Property Name="LodgingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Owner" Type="nvarchar(max)" />
+          <Property Name="IsResort" Type="bit" Nullable="false" />
+          <Property Name="Destination_DestinationId" Type="int" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedTime" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Settings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Key" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="250" />
+          <Property Name="Value" Type="nvarchar(max)" />
+          <Property Name="CreatedTime" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="T_Destinations">
+          <Key>
+            <PropertyRef Name="DestinationId" />
+          </Key>
+          <Property Name="DestinationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Country" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="Photo" Type="image" />
+        </EntityType>
+        <EntityType Name="Tags">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="CreatedTime" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Trips">
+          <Key>
+            <PropertyRef Name="Identity" />
+          </Key>
+          <Property Name="Identity" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="StrDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
+          <Property Name="CostUSD" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserRoleRLs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RoleId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatedTime" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="250" />
+          <Property Name="Password" Type="nvarchar" MaxLength="200" />
+          <Property Name="NickName" Type="nvarchar" MaxLength="200" />
+          <Property Name="ImageKey" Type="nvarchar" MaxLength="250" />
+          <Property Name="Age" Type="int" Nullable="false" />
+          <Property Name="Signature" Type="nvarchar" MaxLength="250" />
+          <Property Name="Gender" Type="int" Nullable="false" />
+          <Property Name="RegisterIp" Type="nvarchar" MaxLength="20" />
+          <Property Name="RegisterAddress" Type="nvarchar" MaxLength="250" />
+          <Property Name="LastLoginTime" Type="datetime" />
+          <Property Name="InternalNotes" Type="nvarchar" MaxLength="250" />
+          <Property Name="CreatedTime" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UserTagRLs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TagId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatedTime" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedTime" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_dbo_Images_dbo_Users_UserId">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Images" Type="Self.Images" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Images">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Lodgings_dbo_T_Destinations_Destination_DestinationId">
+          <End Role="T_Destinations" Type="Self.T_Destinations" Multiplicity="0..1" />
+          <End Role="Lodgings" Type="Self.Lodgings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Destinations">
+              <PropertyRef Name="DestinationId" />
+            </Principal>
+            <Dependent Role="Lodgings">
+              <PropertyRef Name="Destination_DestinationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UserRoleRLs_dbo_Roles_RoleId">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="UserRoleRLs" Type="Self.UserRoleRLs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRoleRLs">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UserRoleRLs_dbo_Users_UserId">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserRoleRLs" Type="Self.UserRoleRLs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRoleRLs">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UserTagRLs_dbo_Tags_TagId">
+          <End Role="Tags" Type="Self.Tags" Multiplicity="1" />
+          <End Role="UserTagRLs" Type="Self.UserTagRLs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tags">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserTagRLs">
+              <PropertyRef Name="TagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UserTagRLs_dbo_Users_UserId">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserTagRLs" Type="Self.UserTagRLs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserTagRLs">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GdpStatisticModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Images" EntityType="Self.Images" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lodgings" EntityType="Self.Lodgings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Settings" EntityType="Self.Settings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Destinations" EntityType="Self.T_Destinations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tags" EntityType="Self.Tags" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Trips" EntityType="Self.Trips" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRoleRLs" EntityType="Self.UserRoleRLs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTagRLs" EntityType="Self.UserTagRLs" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_Images_dbo_Users_UserId" Association="Self.FK_dbo_Images_dbo_Users_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Images" EntitySet="Images" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Lodgings_dbo_T_Destinations_Destination_DestinationId" Association="Self.FK_dbo_Lodgings_dbo_T_Destinations_Destination_DestinationId">
+            <End Role="T_Destinations" EntitySet="T_Destinations" />
+            <End Role="Lodgings" EntitySet="Lodgings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UserRoleRLs_dbo_Roles_RoleId" Association="Self.FK_dbo_UserRoleRLs_dbo_Roles_RoleId">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="UserRoleRLs" EntitySet="UserRoleRLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UserRoleRLs_dbo_Users_UserId" Association="Self.FK_dbo_UserRoleRLs_dbo_Users_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserRoleRLs" EntitySet="UserRoleRLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UserTagRLs_dbo_Tags_TagId" Association="Self.FK_dbo_UserTagRLs_dbo_Tags_TagId">
+            <End Role="Tags" EntitySet="Tags" />
+            <End Role="UserTagRLs" EntitySet="UserTagRLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UserTagRLs_dbo_Users_UserId" Association="Self.FK_dbo_UserTagRLs_dbo_Users_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserTagRLs" EntitySet="UserTagRLs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GdpStatisticModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Images">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="UserId" Type="Guid" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OriginalPath" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="Width" Type="Int32" Nullable="false" />
+          <Property Name="Height" Type="Int32" Nullable="false" />
+          <Property Name="Length" Type="Int32" Nullable="false" />
+          <Property Name="Key" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_dbo_Images_dbo_Users_UserId" FromRole="Images" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Lodgings">
+          <Key>
+            <PropertyRef Name="LodgingId" />
+          </Key>
+          <Property Name="LodgingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Owner" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsResort" Type="Boolean" Nullable="false" />
+          <Property Name="Destination_DestinationId" Type="Int32" />
+          <NavigationProperty Name="T_Destinations" Relationship="Self.FK_dbo_Lodgings_dbo_T_Destinations_Destination_DestinationId" FromRole="Lodgings" ToRole="T_Destinations" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="UserRoleRLs" Relationship="Self.FK_dbo_UserRoleRLs_dbo_Roles_RoleId" FromRole="Roles" ToRole="UserRoleRLs" />
+        </EntityType>
+        <EntityType Name="Settings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Key" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="T_Destinations">
+          <Key>
+            <PropertyRef Name="DestinationId" />
+          </Key>
+          <Property Name="DestinationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Country" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Lodgings" Relationship="Self.FK_dbo_Lodgings_dbo_T_Destinations_Destination_DestinationId" FromRole="T_Destinations" ToRole="Lodgings" />
+        </EntityType>
+        <EntityType Name="Tags">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="UserTagRLs" Relationship="Self.FK_dbo_UserTagRLs_dbo_Tags_TagId" FromRole="Tags" ToRole="UserTagRLs" />
+        </EntityType>
+        <EntityType Name="Trips">
+          <Key>
+            <PropertyRef Name="Identity" />
+          </Key>
+          <Property Name="Identity" Type="Guid" Nullable="false" />
+          <Property Name="StrDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CostUSD" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserRoleRLs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="RoleId" Type="Guid" Nullable="false" />
+          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Roles" Relationship="Self.FK_dbo_UserRoleRLs_dbo_Roles_RoleId" FromRole="UserRoleRLs" ToRole="Roles" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_dbo_UserRoleRLs_dbo_Users_UserId" FromRole="UserRoleRLs" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="NickName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ImageKey" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="Int32" Nullable="false" />
+          <Property Name="Signature" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="Int32" Nullable="false" />
+          <Property Name="RegisterIp" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="RegisterAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="LastLoginTime" Type="DateTime" Precision="3" />
+          <Property Name="InternalNotes" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Images" Relationship="Self.FK_dbo_Images_dbo_Users_UserId" FromRole="Users" ToRole="Images" />
+          <NavigationProperty Name="UserRoleRLs" Relationship="Self.FK_dbo_UserRoleRLs_dbo_Users_UserId" FromRole="Users" ToRole="UserRoleRLs" />
+          <NavigationProperty Name="UserTagRLs" Relationship="Self.FK_dbo_UserTagRLs_dbo_Users_UserId" FromRole="Users" ToRole="UserTagRLs" />
+        </EntityType>
+        <EntityType Name="UserTagRLs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="TagId" Type="Guid" Nullable="false" />
+          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Tags" Relationship="Self.FK_dbo_UserTagRLs_dbo_Tags_TagId" FromRole="UserTagRLs" ToRole="Tags" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_dbo_UserTagRLs_dbo_Users_UserId" FromRole="UserTagRLs" ToRole="Users" />
+        </EntityType>
+        <Association Name="FK_dbo_Images_dbo_Users_UserId">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Images" Type="Self.Images" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Images">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Lodgings_dbo_T_Destinations_Destination_DestinationId">
+          <End Role="T_Destinations" Type="Self.T_Destinations" Multiplicity="0..1" />
+          <End Role="Lodgings" Type="Self.Lodgings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Destinations">
+              <PropertyRef Name="DestinationId" />
+            </Principal>
+            <Dependent Role="Lodgings">
+              <PropertyRef Name="Destination_DestinationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UserRoleRLs_dbo_Roles_RoleId">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="UserRoleRLs" Type="Self.UserRoleRLs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRoleRLs">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UserTagRLs_dbo_Tags_TagId">
+          <End Role="Tags" Type="Self.Tags" Multiplicity="1" />
+          <End Role="UserTagRLs" Type="Self.UserTagRLs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tags">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserTagRLs">
+              <PropertyRef Name="TagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UserRoleRLs_dbo_Users_UserId">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserRoleRLs" Type="Self.UserRoleRLs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRoleRLs">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UserTagRLs_dbo_Users_UserId">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserTagRLs" Type="Self.UserTagRLs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserTagRLs">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GdpStatisticEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="Images" EntityType="Self.Images" />
+          <EntitySet Name="Lodgings" EntityType="Self.Lodgings" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" />
+          <EntitySet Name="Settings" EntityType="Self.Settings" />
+          <EntitySet Name="T_Destinations" EntityType="Self.T_Destinations" />
+          <EntitySet Name="Tags" EntityType="Self.Tags" />
+          <EntitySet Name="Trips" EntityType="Self.Trips" />
+          <EntitySet Name="UserRoleRLs" EntityType="Self.UserRoleRLs" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="UserTagRLs" EntityType="Self.UserTagRLs" />
+          <AssociationSet Name="FK_dbo_Images_dbo_Users_UserId" Association="Self.FK_dbo_Images_dbo_Users_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Images" EntitySet="Images" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Lodgings_dbo_T_Destinations_Destination_DestinationId" Association="Self.FK_dbo_Lodgings_dbo_T_Destinations_Destination_DestinationId">
+            <End Role="T_Destinations" EntitySet="T_Destinations" />
+            <End Role="Lodgings" EntitySet="Lodgings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UserRoleRLs_dbo_Roles_RoleId" Association="Self.FK_dbo_UserRoleRLs_dbo_Roles_RoleId">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="UserRoleRLs" EntitySet="UserRoleRLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UserTagRLs_dbo_Tags_TagId" Association="Self.FK_dbo_UserTagRLs_dbo_Tags_TagId">
+            <End Role="Tags" EntitySet="Tags" />
+            <End Role="UserTagRLs" EntitySet="UserTagRLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UserRoleRLs_dbo_Users_UserId" Association="Self.FK_dbo_UserRoleRLs_dbo_Users_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserRoleRLs" EntitySet="UserRoleRLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UserTagRLs_dbo_Users_UserId" Association="Self.FK_dbo_UserTagRLs_dbo_Users_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserTagRLs" EntitySet="UserTagRLs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GdpStatisticModelStoreContainer" CdmEntityContainer="GdpStatisticEntities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="GdpStatisticModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Images">
+            <EntityTypeMapping TypeName="GdpStatisticModel.Images">
+              <MappingFragment StoreEntitySet="Images">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OriginalPath" ColumnName="OriginalPath" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Length" ColumnName="Length" />
+                <ScalarProperty Name="Key" ColumnName="Key" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="LastUpdatedTime" ColumnName="LastUpdatedTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lodgings">
+            <EntityTypeMapping TypeName="GdpStatisticModel.Lodgings">
+              <MappingFragment StoreEntitySet="Lodgings">
+                <ScalarProperty Name="LodgingId" ColumnName="LodgingId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="IsResort" ColumnName="IsResort" />
+                <ScalarProperty Name="Destination_DestinationId" ColumnName="Destination_DestinationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="GdpStatisticModel.Roles">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="LastUpdatedTime" ColumnName="LastUpdatedTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Settings">
+            <EntityTypeMapping TypeName="GdpStatisticModel.Settings">
+              <MappingFragment StoreEntitySet="Settings">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Key" ColumnName="Key" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="LastUpdatedTime" ColumnName="LastUpdatedTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Destinations">
+            <EntityTypeMapping TypeName="GdpStatisticModel.T_Destinations">
+              <MappingFragment StoreEntitySet="T_Destinations">
+                <ScalarProperty Name="DestinationId" ColumnName="DestinationId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tags">
+            <EntityTypeMapping TypeName="GdpStatisticModel.Tags">
+              <MappingFragment StoreEntitySet="Tags">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="LastUpdatedTime" ColumnName="LastUpdatedTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trips">
+            <EntityTypeMapping TypeName="GdpStatisticModel.Trips">
+              <MappingFragment StoreEntitySet="Trips">
+                <ScalarProperty Name="Identity" ColumnName="Identity" />
+                <ScalarProperty Name="StrDate" ColumnName="StrDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="CostUSD" ColumnName="CostUSD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoleRLs">
+            <EntityTypeMapping TypeName="GdpStatisticModel.UserRoleRLs">
+              <MappingFragment StoreEntitySet="UserRoleRLs">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="LastUpdatedTime" ColumnName="LastUpdatedTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="GdpStatisticModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="NickName" ColumnName="NickName" />
+                <ScalarProperty Name="ImageKey" ColumnName="ImageKey" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Signature" ColumnName="Signature" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="RegisterIp" ColumnName="RegisterIp" />
+                <ScalarProperty Name="RegisterAddress" ColumnName="RegisterAddress" />
+                <ScalarProperty Name="LastLoginTime" ColumnName="LastLoginTime" />
+                <ScalarProperty Name="InternalNotes" ColumnName="InternalNotes" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="LastUpdatedTime" ColumnName="LastUpdatedTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTagRLs">
+            <EntityTypeMapping TypeName="GdpStatisticModel.UserTagRLs">
+              <MappingFragment StoreEntitySet="UserTagRLs">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="TagId" ColumnName="TagId" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="LastUpdatedTime" ColumnName="LastUpdatedTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

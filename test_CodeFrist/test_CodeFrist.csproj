@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{18E1F938-43A0-419C-8073-F931D047462B}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>test_CodeFrist</RootNamespace>
+    <AssemblyName>test_CodeFrist</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="C__MigrationHistory.cs">
+      <DependentUpon>GdpEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GdpEntites.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GdpEntites.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GdpEntites.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GdpEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GdpEntites.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GdpEntites.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Images.cs">
+      <DependentUpon>GdpEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Lodgings.cs">
+      <DependentUpon>GdpEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Destination.cs" />
+    <Compile Include="Model\Lodging.cs" />
+    <Compile Include="Model\Test_OneToOne.cs" />
+    <Compile Include="Model\Trip.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Roles.cs">
+      <DependentUpon>GdpEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs">
+      <DependentUpon>GdpEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tags.cs">
+      <DependentUpon>GdpEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="testContext.cs" />
+    <Compile Include="Trips.cs">
+      <DependentUpon>GdpEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_Destinations.cs">
+      <DependentUpon>GdpEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserRoleRLs.cs">
+      <DependentUpon>GdpEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Users.cs">
+      <DependentUpon>GdpEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserTagRLs.cs">
+      <DependentUpon>GdpEntites.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="GdpEntites.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>GdpEntites.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="GdpEntites.edmx.diagram">
+      <DependentUpon>GdpEntites.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="GdpEntites.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GdpEntites.edmx</DependentUpon>
+      <LastGenOutput>GdpEntites.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="GdpEntites.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GdpEntites.edmx</DependentUpon>
+      <LastGenOutput>GdpEntites.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

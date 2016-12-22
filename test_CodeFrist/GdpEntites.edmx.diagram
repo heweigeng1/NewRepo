@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6bc3598fc22443d4abb11a12ca704e61" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="GdpStatisticModel.C__MigrationHistory" Width="1.5" PointX="8.25" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GdpStatisticModel.Images" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GdpStatisticModel.Lodgings" Width="1.5" PointX="8" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GdpStatisticModel.Roles" Width="1.5" PointX="7.125" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GdpStatisticModel.Settings" Width="1.5" PointX="6.5" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GdpStatisticModel.T_Destinations" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GdpStatisticModel.Tags" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GdpStatisticModel.Trips" Width="1.5" PointX="10.125" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GdpStatisticModel.UserRoleRLs" Width="1.5" PointX="4.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GdpStatisticModel.Users" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GdpStatisticModel.UserTagRLs" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_Images_dbo_Users_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_Lodgings_dbo_T_Destinations_Destination_DestinationId" ManuallyRouted="false" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_UserRoleRLs_dbo_Roles_RoleId" ManuallyRouted="false" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_UserTagRLs_dbo_Tags_TagId" ManuallyRouted="false" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_UserRoleRLs_dbo_Users_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="GdpStatisticModel.FK_dbo_UserTagRLs_dbo_Users_UserId" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
