@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test1", "test1", "{491BC73D-4418-4383-B702-85C61AAF1CD0}"
 EndProject
@@ -20,6 +20,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "epplus", "epplus\epplus.csproj", "{29FBF803-398C-4E37-AD14-AD0CFC161C85}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "人工智能", "人工智能\人工智能.csproj", "{A8BA1066-5695-4D71-ABB4-65E5A5E0C3D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testEf", "testEf\testEf.csproj", "{DB2C3431-8B41-4450-B520-C7EFCC3B378F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "singleton", "singleton\singleton.csproj", "{01038A4C-7E52-4DC6-B81B-C74588CC0805}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +63,14 @@ Global
 		{A8BA1066-5695-4D71-ABB4-65E5A5E0C3D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8BA1066-5695-4D71-ABB4-65E5A5E0C3D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8BA1066-5695-4D71-ABB4-65E5A5E0C3D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB2C3431-8B41-4450-B520-C7EFCC3B378F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB2C3431-8B41-4450-B520-C7EFCC3B378F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB2C3431-8B41-4450-B520-C7EFCC3B378F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB2C3431-8B41-4450-B520-C7EFCC3B378F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01038A4C-7E52-4DC6-B81B-C74588CC0805}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01038A4C-7E52-4DC6-B81B-C74588CC0805}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01038A4C-7E52-4DC6-B81B-C74588CC0805}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01038A4C-7E52-4DC6-B81B-C74588CC0805}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -72,5 +84,7 @@ Global
 		{D7EB7828-82BD-47B2-B519-78BE47F838B8} = {491BC73D-4418-4383-B702-85C61AAF1CD0}
 		{29FBF803-398C-4E37-AD14-AD0CFC161C85} = {491BC73D-4418-4383-B702-85C61AAF1CD0}
 		{A8BA1066-5695-4D71-ABB4-65E5A5E0C3D4} = {491BC73D-4418-4383-B702-85C61AAF1CD0}
+		{DB2C3431-8B41-4450-B520-C7EFCC3B378F} = {491BC73D-4418-4383-B702-85C61AAF1CD0}
+		{01038A4C-7E52-4DC6-B81B-C74588CC0805} = {491BC73D-4418-4383-B702-85C61AAF1CD0}
 	EndGlobalSection
 EndGlobal
