@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 
@@ -29,6 +28,11 @@ namespace test_thread
             var thc = new ThreadClass();
             var user = new User { Name = "tom", Age = 18 };
             thc.Test2(thc.ParameC,user , 10);
+        }
+        public void ThreadPool1()
+        {
+            var thc = new ThreadClass();
+            thc.ThreadPoolTest(10);
         }
     }
 }

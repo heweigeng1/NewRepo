@@ -21,6 +21,34 @@ namespace test_thread
         {
             Console.Write("B");
         }
+        public void C(object state)
+        {
+            Console.Write("C");
+        }
+        public void D(string msg)
+        {
+            Console.Write(msg);
+        }
+        public string E(string str)
+        {
+            return str+" ";
+        }
+        public int F(int start,int end)
+        {
+            int sum = default(int);
+            for (int i = start; i <= end; i++)
+            {
+                sum += i;
+            }
+            return sum;
+        }
+        public void For1000(string msg,int count)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                Console.Write(msg);
+            }
+        }
         public void ParameC(User user)
         {
             Console.WriteLine(user.Name+$":{user.Age++}");
@@ -39,6 +67,13 @@ namespace test_thread
             {
                 var th=new Thread(new ParameterizedThreadStart(obj => action(user)));
                 th.Start(user);
+            }
+        }
+        public void ThreadPoolTest(int count)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                ThreadPool.QueueUserWorkItem(new WaitCallback(C));
             }
         }
     }
