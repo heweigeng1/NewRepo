@@ -52,7 +52,8 @@ namespace test_thread
             //    Console.WriteLine(str1 + str2);
             //}
 
-            var sum = new TaskDemo().GetSumAsync(10, 100);
+           var sum= new TaskDemo().GetSumAsync(10, 100);
+            Console.WriteLine(5);
             Console.WriteLine(sum.Result);
             Console.ReadKey();
         }

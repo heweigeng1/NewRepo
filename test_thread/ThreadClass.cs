@@ -40,6 +40,8 @@ namespace test_thread
             {
                 sum += i;
             }
+            Thread.Sleep(1000);
+            Console.WriteLine(2);
             return sum;
         }
         public void For1000(string msg,int count)

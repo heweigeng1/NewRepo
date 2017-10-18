@@ -80,8 +80,8 @@ namespace test_thread
         {
             Console.WriteLine(1);
             int sum = await Task.Run(func);
-            Console.WriteLine(2);
             Console.WriteLine(3);
+            Console.WriteLine(4);
             return sum;
         }
     }
