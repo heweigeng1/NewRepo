@@ -9,22 +9,24 @@ namespace LOG4NET
 {
     class Program
     {
-        static void Main(string[] args)
+
+        public static void Main(string[] args)
         {
-            //testlog();
-            LOG4NET.Log("aaaaa");
-            Console.ReadLine();
+            Testlog();
+            Console.WriteLine("日志记录完毕。");
+            Console.Read();
         }
-        public static void testlog()
+        public static void Testlog()
         {
+            var log = LogManager.GetLogger("FileLogger");
             try
             {
                 throw new Exception("istest");
             }
             catch (Exception ex)
             {
-                LOG4NET.Log(ex.ToString());
-               // logger.Error(ex.ToString());
+                log.Info(ex.ToString());
+                log.Error("test", ex);
             }
         }
     }

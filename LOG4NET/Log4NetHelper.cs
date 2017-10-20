@@ -8,26 +8,26 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-[assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net.config", Watch = true)]
+
 namespace LOG4NET
 {
 
     public class LOG4NET
     {
-        public static readonly ILog loginfo = LogManager.GetLogger("loginfo");
-        public static readonly ILog logerror = LogManager.GetLogger("logerror");
+        public static  ILog loginfo = LogManager.GetLogger("loginfo");
+        public static  ILog logerror = LogManager.GetLogger("FileLogger");
         public static Regex htmlTagReg = new Regex(@"<\w+>|</\w+>", RegexOptions.IgnoreCase);
 
-        public static void SetConfig()
-        {
-            //log4net.Config.DOMConfigurator.Configure();
-            XmlConfigurator.Configure();
-        }
-        public static void SetConfig(FileInfo configFile)
-        {
-            //log4net.Config.DOMConfigurator.Configure(configFile);
-            XmlConfigurator.Configure(configFile);
-        }
+        //public static void SetConfig()
+        //{
+        //    //log4net.Config.DOMConfigurator.Configure();
+        //    XmlConfigurator.Configure();
+        //}
+        //public static void SetConfig(FileInfo configFile)
+        //{
+        //    //log4net.Config.DOMConfigurator.Configure(configFile);
+        //    XmlConfigurator.Configure(configFile);
+        //}
 
         public static void Log(string info)
         {
@@ -74,6 +74,8 @@ namespace LOG4NET
             //        logerror.Error("访问地址：" + (htmlTagReg.Match(url).Success ? HttpUtility.HtmlEncode(url) : url) + "<br />\r\nIP 地  址：" + HttpContext.Current.Request.UserHostAddress + "<br />\r\n错误内容：<span style=\"color:red\">" + error + "</span>", exception);
             //    }
             //    else
+            logerror.Debug("调试信息的日志");
+            logerror.Info("一般信息的日志");
             logerror.Error("访问地址：系统<br />\r\nIP 地  址：N/A <br />\r\n错误内容：<span style=\"color:red\">" + error + "</span>", exception);
         }
     }
