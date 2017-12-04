@@ -18,15 +18,15 @@ namespace LOG4NET
         }
         public static void Testlog()
         {
-            var log = LogManager.GetLogger("FileLogger");
+           // var log = LOG4NET.logerror("FileLogger");
             try
             {
                 throw new Exception("istest");
             }
             catch (Exception ex)
             {
-                log.Info(ex.ToString());
-                log.Error("test", ex);
+                LOG4NET.Log(ex.ToString());
+                LOG4NET.Error("test", ex);
             }
         }
     }

@@ -8,26 +8,25 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-
 namespace LOG4NET
 {
 
     public class LOG4NET
     {
-        public static  ILog loginfo = LogManager.GetLogger("loginfo");
+        public static  ILog loginfo = LogManager.GetLogger("Loginfo");
         public static  ILog logerror = LogManager.GetLogger("FileLogger");
         public static Regex htmlTagReg = new Regex(@"<\w+>|</\w+>", RegexOptions.IgnoreCase);
 
-        //public static void SetConfig()
-        //{
-        //    //log4net.Config.DOMConfigurator.Configure();
-        //    XmlConfigurator.Configure();
-        //}
-        //public static void SetConfig(FileInfo configFile)
-        //{
-        //    //log4net.Config.DOMConfigurator.Configure(configFile);
-        //    XmlConfigurator.Configure(configFile);
-        //}
+        public static void SetConfig()
+        {
+            //log4net.Config.DOMConfigurator.Configure();
+            XmlConfigurator.Configure();
+        }
+        public static void SetConfig(FileInfo configFile)
+        {
+            //log4net.Config.DOMConfigurator.Configure(configFile);
+            XmlConfigurator.Configure(configFile);
+        }
 
         public static void Log(string info)
         {
