@@ -14,7 +14,7 @@ namespace PostNodify
         static void Main(string[] args)
         {
             //HttpWebRequestPost("http://localhost:6832/WxPay/Notify", "<xml><sign></sign></xml>");
-            Post("http://localhost:6832/WxPay/Notify", "<xml><sign></sign></xml>");
+            Post("https://pm.shundaonetwork.com/public/home/Notify", "<xml><sign></sign></xml>");
             Console.WriteLine("post over");
             Console.ReadKey();
         }
