@@ -14,7 +14,10 @@ namespace PostNodify
         static void Main(string[] args)
         {
             //HttpWebRequestPost("http://localhost:6832/WxPay/Notify", "<xml><sign></sign></xml>");
-            Post("https://pm.shundaonetwork.com/public/home/Notify", "<xml><sign></sign></xml>");
+            //Post("https://pm.shundaonetwork.com/public/home/Notify", "<xml><sign></sign></xml>");
+            //Post("http://localhost:21021/api/services/app/MobliePay/Nodify", "<xml><sign>abccc</sign></xml>");
+            //Post("http://localhost:21021/Nodify/MobliePay", "<xml><sign>abccc</sign></xml>");
+            Post("http://localhost:21021/Nodify/Test2", "<xml><sign>abccc</sign></xml>");
             Console.WriteLine("post over");
             Console.ReadKey();
         }
@@ -39,7 +42,7 @@ namespace PostNodify
             byte[] data = encoding.GetBytes(xml);
             HttpClient hc = new HttpClient();
             ByteArrayContent bt = new ByteArrayContent(data);
-            var response = await hc.GetAsync(url);
+            var response = await hc.PostAsync(url, bt);
             Console.WriteLine(await response.Content.ReadAsStringAsync());
         }
     }
