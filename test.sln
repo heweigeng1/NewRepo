@@ -31,7 +31,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileConsoleApp", "FileConso
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XunitDemo", "XunitDemo\XunitDemo.csproj", "{36FF0FC5-5527-4F7A-9BD1-656BD5104A25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InitTree", "InitTree\InitTree.csproj", "{ADCA2691-A8C6-4C4B-897F-6E38F957A5FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InitTree", "InitTree\InitTree.csproj", "{ADCA2691-A8C6-4C4B-897F-6E38F957A5FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "operatorDemo", "operatorDemo\operatorDemo.csproj", "{C688F8C4-60EF-4B70-95E9-BDB649B1BDEF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -95,6 +97,10 @@ Global
 		{ADCA2691-A8C6-4C4B-897F-6E38F957A5FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADCA2691-A8C6-4C4B-897F-6E38F957A5FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADCA2691-A8C6-4C4B-897F-6E38F957A5FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C688F8C4-60EF-4B70-95E9-BDB649B1BDEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C688F8C4-60EF-4B70-95E9-BDB649B1BDEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C688F8C4-60EF-4B70-95E9-BDB649B1BDEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C688F8C4-60EF-4B70-95E9-BDB649B1BDEF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -114,6 +120,7 @@ Global
 		{657E673E-46E3-4AB8-97C9-A5181A040BD4} = {491BC73D-4418-4383-B702-85C61AAF1CD0}
 		{36FF0FC5-5527-4F7A-9BD1-656BD5104A25} = {491BC73D-4418-4383-B702-85C61AAF1CD0}
 		{ADCA2691-A8C6-4C4B-897F-6E38F957A5FB} = {491BC73D-4418-4383-B702-85C61AAF1CD0}
+		{C688F8C4-60EF-4B70-95E9-BDB649B1BDEF} = {491BC73D-4418-4383-B702-85C61AAF1CD0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C0309848-9D77-44CD-B373-77676266DE78}
