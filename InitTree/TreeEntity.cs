@@ -9,6 +9,6 @@ namespace InitTree
         public int Id { get; set; }
         public int Pid { get; set; }
         public string Name { get; set; }
-        public List<TreeEntity> Child { get; set; } = new List<TreeEntity>();
+        public ICollection<TreeEntity> Child { get; set; } 
     }
 }

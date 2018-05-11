@@ -24,15 +24,18 @@ namespace InitTree
                 var child = list.Where(c => c.Pid == entity.Id).ToList();
                 if (child.Count > 0)
                 {
-                    entity.Child.AddRange(child);
+                  entity.Child=new List<TreeEntity>();
                     foreach (var item in child)
                     {
+                       
+                        entity.Child.Add(item);
                         Add(item, list);
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                var bbb = ex.Message;
             }
 
         }
