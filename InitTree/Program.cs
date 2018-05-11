@@ -40,45 +40,18 @@ namespace InitTree
         {
             List<TreeEntity> list = new List<TreeEntity>();
             int num = 0;
-            for (int i = 1; i < 200; i++)
+            for (int y = 1; y < 4; y++)
             {
-                num++;
-                list.Add(new TreeEntity
+                for (int i = 1; i < 200; i++)
                 {
-                    Id = num,
-                    Pid = new Random().Next(0, 10),
-                    Name = "name" + num,
-                });
-            }
-            for (int i = 1; i < 200; i++)
-            {
-                num++;
-                list.Add(new TreeEntity
-                {
-                    Id = num,
-                    Pid = new Random().Next(10, 20),
-                    Name = "name" + num,
-                });
-            }
-            for (int i = 1; i < 200; i++)
-            {
-                num++;
-                list.Add(new TreeEntity
-                {
-                    Id = num,
-                    Pid = new Random().Next(20, 30),
-                    Name = "name" + num,
-                });
-            }
-            for (int i = 1; i < 200; i++)
-            {
-                num++;
-                list.Add(new TreeEntity
-                {
-                    Id = num,
-                    Pid = new Random().Next(30, 40),
-                    Name = "name" + num,
-                });
+                    num++;
+                    list.Add(new TreeEntity
+                    {
+                        Id = num,
+                        Pid = new Random().Next((y-1)*10, y*10),
+                        Name = "name" + num,
+                    });
+                }
             }
             return list;
         }
