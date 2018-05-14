@@ -17,7 +17,7 @@ namespace PostNodify
             //Post("https://pm.shundaonetwork.com/public/home/Notify", "<xml><sign></sign></xml>");
             //Post("http://localhost:21021/api/services/app/MobliePay/Nodify", "<xml><sign>abccc</sign></xml>");
             //Post("http://localhost:21021/Nodify/MobliePay", "<xml><sign>abccc</sign></xml>");
-            Post("http://localhost:21021/Nodify/Test2", "<xml><sign>abccc</sign></xml>");
+            Post("http://localhost:21021//api/services/app/Area/Test2", "<xml><sign>abccc</sign></xml>");
             Console.WriteLine("post over");
             Console.ReadKey();
         }
