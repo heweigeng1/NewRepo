@@ -44,6 +44,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SaveFile.cs" />
+    <Compile Include="切割文件.cs" />
+    <Compile Include="获取目录里面的文件.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

