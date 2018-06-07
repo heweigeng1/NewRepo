@@ -19,10 +19,12 @@ namespace PostNodify
             }
             try
             {
-                FileStream fs = new FileStream(fileName, FileMode.Create);
+                FileStream fs = new FileStream(fileName, FileMode.OpenOrCreate);
                 StreamWriter sw = new StreamWriter(fs);
-                //开始写入
-                sw.Write(data);
+                var chars = data.ToCharArray();
+                //从指定的位置开始写入
+                fs.Position = fs.Length;
+                sw.WriteLine(data);
                 //清空缓冲区
                 sw.Flush();
                 //关闭流

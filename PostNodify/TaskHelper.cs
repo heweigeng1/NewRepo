@@ -8,9 +8,14 @@ namespace PostNodify
 {
     public static class TaskHelper
     {
-        public static string TaskPost(Func<string[], int,string> action, string[] line, int tasknum)
+        public static string TaskPost(Func<string[], int, string> action, string[] line, int tasknum)
         {
             return action(line, tasknum);
+        }
+
+        public static string TaskPost(Func<string[], string> func, string[] lines)
+        {
+            return func(lines);
         }
     }
 }
