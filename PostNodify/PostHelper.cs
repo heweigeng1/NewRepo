@@ -204,11 +204,11 @@ namespace PostNodify
         /// <param name="tasks">开启的4个线程</param>
         private static string LoadTxtPost(string url, string file, Task[] tasks, int taskId)
         {
+            DateTime str = DateTime.Now;
             string[] strs0 = File.ReadAllLines(file);
             string pw = "";
             foreach (var item in strs0)
             {
-
                 //提交表单
                 try
                 {
@@ -217,19 +217,19 @@ namespace PostNodify
                     if (!result.Contains("用户名或密码不正确"))
                     {
                         Console.WriteLine(result);
-                        SaveFile.ToTxt(result, Directory.GetCurrentDirectory() + "/非密码错误.txt");
+                        SaveFile.ToTxt(result+"=="+item, Directory.GetCurrentDirectory() + "/非密码错误.txt");
                         pw = item;
                     }
                 }
                 catch (AggregateException ex)
                 {
                     Console.WriteLine(ex.Message);
-                    SaveFile.ToTxt(ex.Message, Directory.GetCurrentDirectory() + "/异常.txt");
+                    SaveFile.ToTxt(ex.Message + "==" + item, Directory.GetCurrentDirectory() + "/异常.txt");
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
-                    SaveFile.ToTxt(ex.Message, Directory.GetCurrentDirectory() + "/异常.txt");
+                    SaveFile.ToTxt(ex.Message+"=="+item, Directory.GetCurrentDirectory() + "/异常.txt");
                 }
                 if (pw != "")
                 {
@@ -242,7 +242,8 @@ namespace PostNodify
                     break;
                 }
             }
-            SaveFile.ToTxt(pw, Directory.GetCurrentDirectory() + "/已读文档.txt");
+            SaveFile.ToTxt(file+$"#{str}-{DateTime.Now}", Directory.GetCurrentDirectory() + "/已读文档.txt");
+            SaveFile.MoveTo(file);
             return pw;
         }
     }

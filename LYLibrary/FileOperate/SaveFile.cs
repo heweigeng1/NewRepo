@@ -1,14 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace PostNodify
+namespace LYLibrary.FileOperate
 {
+    /// <summary>
+    /// 保存文件
+    /// </summary>
     public static class SaveFile
     {
+        /// <summary>
+        /// 保存数据到txt,并且换行. FileMode.OpenOrCreate，
+        /// 可以简单模拟写日志。
+        /// </summary>
+        /// <param name="data">要保存的数据</param>
+        /// <param name="fileName">文件名称</param>
+        /// <returns></returns>
         public static string ToTxt(string data, string fileName)
         {
             FileInfo file = new FileInfo(fileName);
@@ -37,17 +45,6 @@ namespace PostNodify
                 return fileName = "error";
             }
             return fileName;
-        }
-
-        public static void MoveTo(string fileName)
-        {
-            string name = Path.GetFileName(fileName);
-            string path = Directory.GetCurrentDirectory() + "/已读/";
-            if (!Directory.Exists(path))
-            {
-                Directory.CreateDirectory(path);
-            }
-            File.Move(fileName, path+ name);
         }
     }
 }
