@@ -48,7 +48,10 @@ namespace PostNodify
             //}
 
             //var st = PostHelper.TaskArrayPost(line, "http://ceshi.tombsale.com/admin/user/login", taskcount);
-            string pw = PostHelper.LoadFilesPost(path, "http://ceshi.tombsale.com/admin/user/login");
+            Console.WriteLine("请输入要登陆的url:");
+            string url = Console.ReadLine();
+            //"http://ceshi.tombsale.com/admin/user/login"
+            string pw = PostHelper.LoadFilesPost(path, url);
             Console.WriteLine("结束，这里有密码。");
             Console.WriteLine("密码=================>" + pw);
             Console.WriteLine("post over");
