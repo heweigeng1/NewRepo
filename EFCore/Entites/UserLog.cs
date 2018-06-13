@@ -6,13 +6,16 @@ using System.Text;
 
 namespace EFCore.Entites
 {
+    /// <summary>
+    /// B
+    /// </summary>
     public class UserLog
     {
-        public Guid Id { get; set; }
         public DateTime LoginTime { get; set; }
         public Guid UId { get; set; }
         [ForeignKey("UId")]
         public virtual User User { get; set; }
         public string LogDec { get; set; }
+        public List<Log> Logs { get; set; }
     }
 }

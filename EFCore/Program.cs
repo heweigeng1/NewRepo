@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace EFCore
 {
@@ -10,20 +11,54 @@ namespace EFCore
     {
         static void Main(string[] args)
         {
-            AddUserLog();
+            //AddUser();
+            //AddUserLog();
+            //AddLog();
+            强制转换();
+            //var user = ThenIncludeSelect();
+            //Console.WriteLine(JsonConvert.SerializeObject(user));
+            Console.ReadKey();
+        }
+
+        private static void AddLog()
+        {
+            using (var db=new FristContext())
+            {
+                var userlog = db.AllLogs.FirstOrDefault();
+                db.Logs.Add(new Log
+                {
+                    Id = Guid.NewGuid(),
+                    Message = "我是日志",
+                    UserLogId = userlog.Id,
+                });
+                db.SaveChanges();
+            }
+        }
+        private static AllLog 强制转换()
+        {
             using (var db = new FristContext())
             {
-                var data = db.Users.Include(user => user.UserLog).ToList();
-                var users = from user in data
-                            select new
-                            {
-                                user.UserLog,
-                                user.UserName,
-                                user.Creatime,
-                            };
-                Console.WriteLine(JsonConvert.SerializeObject(users));
+                var data = db.AllLogs
+                         .Include(allLogs => (allLogs as UserLog).Logs)
+                         .FirstOrDefault();
+                return data;
             }
-            Console.ReadKey();
+        }
+        private static User SelectUser()
+        {
+            using (var db = new FristContext())
+            {
+                return db.Users.Include(user => user.UserLog).FirstOrDefault();
+            }
+        }
+        private static User ThenIncludeSelect() {
+            using (var db=new FristContext())
+            {
+              var data=  db.Users
+                    .Include(user => user.UserLog)
+                        .ThenInclude(userlog => userlog.Logs).FirstOrDefault();
+                return data;
+            }
         }
 
         private static void AddUserLog()
@@ -31,7 +66,7 @@ namespace EFCore
             using (var db = new FristContext())
             {
                 var user = db.Users.FirstOrDefault();
-                db.UserLogs.Add(new UserLog
+                db.AllLogs.Add(new UserLog
                 {
                     Id = Guid.NewGuid(),
                     LogDec = "我的登录",
@@ -50,7 +85,8 @@ namespace EFCore
                 {
                     Id = Guid.NewGuid(),
                     Creatime = DateTime.Now,
-                    UserName = "用户"
+                    Name = "用户",
+                    Pason=new Pason(),
                 });
                 return db.SaveChanges() > 0;
             }
