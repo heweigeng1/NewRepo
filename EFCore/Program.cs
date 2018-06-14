@@ -11,18 +11,20 @@ namespace EFCore
     {
         static void Main(string[] args)
         {
-            AddUser();
-            AddUserLog();
-            AddLog();
-            强制转换();
+            //AddUser();
+            //AddUserLog();
+            //AddLog();
+            //AS转换();
             //var user = ThenIncludeSelect();
             //Console.WriteLine(JsonConvert.SerializeObject(user));
+            var user = 显式加载.Load1();
+            //var user2 = 显式加载.Load2();
             Console.ReadKey();
         }
 
         private static void AddLog()
         {
-            using (var db=new FristContext())
+            using (var db = new FristContext())
             {
                 var userlog = db.UserLogs.FirstOrDefault();
                 db.AllLogs.Add(new Log
@@ -34,12 +36,22 @@ namespace EFCore
                 db.SaveChanges();
             }
         }
-        private static AllLog 强制转换()
+        private static AllLog AS转换()
         {
             using (var db = new FristContext())
             {
                 var data = db.AllLogs
                          .Include(allLogs => (allLogs as Log).UserLog)
+                         .FirstOrDefault();
+                return data;
+            }
+        }
+        private static AllLog 强制转换()
+        {
+            using (var db = new FristContext())
+            {
+                var data = db.AllLogs
+                         .Include(allLogs => ((Log)allLogs).UserLog)
                          .FirstOrDefault();
                 return data;
             }
@@ -51,12 +63,13 @@ namespace EFCore
                 return db.Users.Include(user => user.UserLog).FirstOrDefault();
             }
         }
-        private static User ThenIncludeSelect() {
-            using (var db=new FristContext())
+        private static User ThenIncludeSelect()
+        {
+            using (var db = new FristContext())
             {
-              var data=  db.Users
-                    .Include(user => user.UserLog)
-                        .ThenInclude(userlog => userlog.Logs).FirstOrDefault();
+                var data = db.Users
+                      .Include(user => user.UserLog)
+                          .ThenInclude(userlog => userlog.Logs).FirstOrDefault();
                 return data;
             }
         }
@@ -86,7 +99,7 @@ namespace EFCore
                     Id = Guid.NewGuid(),
                     Creatime = DateTime.Now,
                     Name = "用户",
-                    Pason=new Pason(),
+                    Pason = new Pason(),
                 });
                 return db.SaveChanges() > 0;
             }

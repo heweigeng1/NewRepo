@@ -10,7 +10,6 @@ namespace EFCore
     public class FristContext : DbContext
     {
         public DbSet<User> Users { get; set; }
-        //public DbSet<UserLog> UserLogs { get; set; }
         public DbSet<UserLog> UserLogs { get; set; }
         public DbSet<AllLog> AllLogs { get; set; }
         //FristContext(DbContextOptions<FristContext> options) : base(options)
