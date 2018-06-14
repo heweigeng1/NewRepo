@@ -5,7 +5,7 @@ using System.Text;
 namespace EFCore.Entites
 {
     /// <summary>
-    /// A
+    /// 日志基础属性
     /// </summary>
     public class AllLog
     {

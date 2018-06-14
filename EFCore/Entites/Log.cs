@@ -6,7 +6,7 @@ using System.Text;
 namespace EFCore.Entites
 {
     /// <summary>
-    /// C
+    /// 某定制日志
     /// </summary>
     public class Log :AllLog
     {

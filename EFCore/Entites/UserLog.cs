@@ -7,10 +7,11 @@ using System.Text;
 namespace EFCore.Entites
 {
     /// <summary>
-    /// B
+    /// 用户日志表
     /// </summary>
     public class UserLog
     {
+        public Guid Id { get; set; }
         public DateTime LoginTime { get; set; }
         public Guid UId { get; set; }
         [ForeignKey("UId")]

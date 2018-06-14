@@ -11,9 +11,9 @@ namespace EFCore
     {
         static void Main(string[] args)
         {
-            //AddUser();
-            //AddUserLog();
-            //AddLog();
+            AddUser();
+            AddUserLog();
+            AddLog();
             强制转换();
             //var user = ThenIncludeSelect();
             //Console.WriteLine(JsonConvert.SerializeObject(user));
@@ -24,8 +24,8 @@ namespace EFCore
         {
             using (var db=new FristContext())
             {
-                var userlog = db.AllLogs.FirstOrDefault();
-                db.Logs.Add(new Log
+                var userlog = db.UserLogs.FirstOrDefault();
+                db.AllLogs.Add(new Log
                 {
                     Id = Guid.NewGuid(),
                     Message = "我是日志",
@@ -39,7 +39,7 @@ namespace EFCore
             using (var db = new FristContext())
             {
                 var data = db.AllLogs
-                         .Include(allLogs => (allLogs as UserLog).Logs)
+                         .Include(allLogs => (allLogs as Log).UserLog)
                          .FirstOrDefault();
                 return data;
             }
@@ -66,7 +66,7 @@ namespace EFCore
             using (var db = new FristContext())
             {
                 var user = db.Users.FirstOrDefault();
-                db.AllLogs.Add(new UserLog
+                db.UserLogs.Add(new UserLog
                 {
                     Id = Guid.NewGuid(),
                     LogDec = "我的登录",
