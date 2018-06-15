@@ -17,8 +17,9 @@ namespace EFCore
             //AS转换();
             //var user = ThenIncludeSelect();
             //Console.WriteLine(JsonConvert.SerializeObject(user));
-            var user = 显式加载.Load1();
+            //var user = 显式加载.Load1();
             //var user2 = 显式加载.Load2();
+            var users = ClientEvaluation.SelectUser2();
             Console.ReadKey();
         }
 
