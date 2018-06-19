@@ -19,7 +19,10 @@ namespace EFCore
             //Console.WriteLine(JsonConvert.SerializeObject(user));
             //var user = 显式加载.Load1();
             //var user2 = 显式加载.Load2();
-            var users = ClientEvaluation.SelectUser2();
+            //var users = ClientEvaluation.SelectUser2();
+            跟踪与非跟踪查询.Select();
+            跟踪与非跟踪查询.NoTrackingSelect();
+            跟踪与非跟踪查询.NoTrackingSelect2();
             Console.ReadKey();
         }
 
