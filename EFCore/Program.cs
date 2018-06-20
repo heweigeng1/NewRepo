@@ -20,9 +20,27 @@ namespace EFCore
             //var user = 显式加载.Load1();
             //var user2 = 显式加载.Load2();
             //var users = ClientEvaluation.SelectUser2();
-            跟踪与非跟踪查询.Select();
-            跟踪与非跟踪查询.NoTrackingSelect();
-            跟踪与非跟踪查询.NoTrackingSelect2();
+            //跟踪与非跟踪查询.Select();
+
+
+            //DateTime strtime1 = DateTime.Now;
+            //for (int i = 0; i < 10000; i++)
+            //{
+            //    var u0 = 跟踪与非跟踪查询.Update();
+            //}
+            //DateTime endtime1 = DateTime.Now;
+            //Console.WriteLine($"{endtime1}-{strtime1}={endtime1-strtime1}");
+            //for (int i = 0; i < 10000; i++)
+            //{
+            //    var u1 = 跟踪与非跟踪查询.UpdateAsNoTracking();
+            //}
+            //var endtime2 = DateTime.Now;
+            //Console.WriteLine($"{endtime2}-{endtime1}={endtime2 - endtime1}");
+            //var u2 = 跟踪与非跟踪查询.NoTrackingSelect2();
+            //var u3 = 跟踪与非跟踪查询.Select2();
+            //var u4 = 原生Sql查询.Select1();
+            //var u5 = 原生Sql查询.Select2();
+            var u6 = 原生Sql查询.Select3();//测试SQL注入攻击
             Console.ReadKey();
         }
 

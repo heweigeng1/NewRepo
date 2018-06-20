@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using EFCore.Entites;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,32 +14,63 @@ namespace EFCore
         /// </summary>
         public static void Select()
         {
-            using (var db=new FristContext())
+            using (var db = new FristContext())
             {
                 var entity = db.Users.FirstOrDefault();
-                entity.Name = "老猫";
+                entity.Name = "老猫A";
                 db.SaveChanges();
+            }
+        }
+        /// <summary>
+        /// 跟踪查询2
+        /// </summary>
+        public static List<User> Select2()
+        {
+            using (var db = new FristContext())
+            {
+                return db.Users.ToList();
             }
         }
         /// <summary>
         /// 非跟踪查询
         /// </summary>
-        public static void NoTrackingSelect()
+        public static List<User> NoTrackingSelect()
         {
-            using (var db=new FristContext())
+            using (var db = new FristContext())
             {
-                var entity = db.Users.AsNoTracking().ToList();
+                return db.Users.AsNoTracking().ToList();
             }
         }
         /// <summary>
         /// 非跟踪查询,上下文级别
         /// </summary>
-        public static void NoTrackingSelect2()
+        public static List<User> NoTrackingSelect2()
         {
             using (var db = new FristContext())
             {
                 db.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
-                var entity = db.Users.ToList();
+                return db.Users.ToList();
+            }
+        }
+
+        public static User Update()
+        {
+            using (var db=new FristContext())
+            {
+               var user= db.Users.FirstOrDefault();
+                user.Creatime = DateTime.Now;
+                db.SaveChanges();
+                return user;
+            }
+        }
+        public static User UpdateAsNoTracking()
+        {
+            using (var db = new FristContext())
+            {
+                var user = db.Users.AsNoTracking().FirstOrDefault();
+                user.Creatime = DateTime.Now;
+                db.SaveChanges();
+                return user;
             }
         }
 
