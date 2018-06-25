@@ -40,7 +40,8 @@ namespace EFCore
             //var u3 = 跟踪与非跟踪查询.Select2();
             //var u4 = 原生Sql查询.Select1();
             //var u5 = 原生Sql查询.Select2();
-            var u6 = 原生Sql查询.Select3();//测试SQL注入攻击
+            //var u6 = 原生Sql查询.Select3();//测试SQL注入攻击
+            var u7 = 原生Sql查询.Select4();
             Console.ReadKey();
         }
 

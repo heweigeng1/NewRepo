@@ -28,12 +28,30 @@ namespace EFCore
                 return db.Users.FromSql($"select * from Users where Name={userName}").ToList();
             }
         }
+        /// <summary>
+        /// 模仿sql注入
+        /// </summary>
+        /// <returns></returns>
         public static List<User> Select3()
         {
             using (var db = new FristContext())
             {
                 string userName = "{' or 1=1 --}";
                 return db.Users.FromSql($"select * from Users where Name={userName}").ToList();
+            }
+        }
+        /// <summary>
+        /// 使用linq
+        /// </summary>
+        /// <returns></returns>
+        public static List<User> Select4()
+        {
+            using (var db = new FristContext())
+            {
+                return db.Users.FromSql($"select * from Users")
+                    .Where(c => c.Name.Contains("猫"))
+                    .Include(c => c.UserLog)
+                    .ToList();
             }
         }
     }
